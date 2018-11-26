@@ -24,4 +24,15 @@ class Mentors::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  def index
+  end
+
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+  end
 end
