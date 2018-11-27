@@ -29,7 +29,8 @@ puts "Generating fake mentors ..."
     major_category: major_categories.sample,
     major: majors.sample.titleize,
     degree_level: degree_levels.sample,
-    description: Faker::Lorem.paragraph)
+    description: Faker::Lorem.paragraph,
+    description_two: Faker::Lorem.paragraph)
 end
 
 Mentor.create(
@@ -42,7 +43,8 @@ Mentor.create(
   major_category: major_categories.sample,
   major: majors.sample.titleize,
   degree_level: degree_levels.sample,
-  description: Faker::Lorem.paragraph)
+  description: Faker::Lorem.paragraph,
+  description_two: Faker::Lorem.paragraph)
 
 # mentor_start_id = Mentor.last.id - Mentor.count + 1
 # mentor_end_id = Mentor.last.id
