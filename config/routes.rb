@@ -11,9 +11,9 @@ Rails.application.routes.draw do
 
   devise_scope :mentor do
   get 'mentors', to: 'mentors/sessions#index'
-  get 'mentor', to: 'mentors/sessions#new'
-  get 'edit_mentor', to: 'mentors/sessions#edit'
-  patch 'update_mentor', to: 'mentors/sessions#update'
+  get 'mentors/:id', to: 'mentors/sessions#show', as: :mentor
+  get 'edit_mentor/:id/edit', to: 'mentors/sessions#edit', as: :mentor_edit
+  patch 'update_mentor/:id', to: 'mentors/sessions#update'
   end
 
 end

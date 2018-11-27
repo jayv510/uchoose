@@ -9,9 +9,10 @@ class Mentors::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # POST /resource
+  # # POST /resource
   # def create
   #   super
+  #   @mentor.mentor_id = current_user.id
   # end
 
   # GET /resource/edit
