@@ -1,0 +1,11 @@
+
+<% @mentors.each do |mentor| %>
+<%= mentor.first_name %>
+<%= mentor.last_name %>
+<%= mentor.nationality %>
+<%= mentor.university %>
+<%= mentor.major_category %>
+<%= mentor.major %>
+<%= mentor.degree_level %>
+<%= link_to "More info", mentor_path(mentor) %>
+<% end %>
