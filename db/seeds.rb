@@ -10,10 +10,6 @@ puts "Deleting any existing users ..."
 Prospective.delete_all
 Mentor.delete_all
 
-start_id = User.last.id - User.count + 1
-end_id = User.last.id
-user_id_sample = *(start_id..end_id)
-
 major_categories = ["Agriculture & Natural Resources","Arts","  Biology & Life Science","Business","Communications & Journalism","Computers & Mathematics","Education","Engineering","Health","Humanities & Liberal Arts","Industrial Arts & Consumer Services","Interdisciplinary","Law & Public Policy","Physical Sciences","Psychology & Social Work","Social Science"]
 majors = ["PLANT SCIENCE AND AGRONOMY", "BIOCHEMICAL SCIENCES", "BUSINESS MANAGEMENT AND ADMINISTRATION", "MATHEMATICS AND COMPUTER SCIENCE", "ARCHITECTURAL ENGINEERING", "PHARMACY PHARMACEUTICAL SCIENCES AND ADMINISTRATION", "ENGLISH LANGUAGE AND LITERATURE", "PUBLIC POLICY", "ECONOMICS", "INTERNATIONAL RELATIONS"]
 degree_levels = ["Undergraduate", "Honours", "Masters", "Doctoral", "Post-doctoral", "Other"]
@@ -48,6 +44,9 @@ Mentor.create(
   degree_level: degree_levels.sample,
   description: Faker::Lorem.paragraph)
 
+# mentor_start_id = Mentor.last.id - Mentor.count + 1
+# mentor_end_id = Mentor.last.id
+# mentor_id_sample = *(mentor_start_id..mentor_end_id)
 
 
 puts "Generating fake prospectives ..."
@@ -68,6 +67,9 @@ Prospective.create(
   last_name: "Prospective",
   nationality: Faker::Nation.nationality)
 
+# prospective_start_id = Prospective.last.id - Prospective.count + 1
+# prospective_end_id = Prospective.last.id
+# prospective_id_sample = *(prospective_start_id..prospective_end_id)
 
 
 puts "Seeding complete."
