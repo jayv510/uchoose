@@ -9,4 +9,5 @@ class Mentor < ApplicationRecord
   validates :nationality, presence: true
   validates :university, presence: true
   validates :degree_level, presence: true
+  validates :major_category, presence: true
 end

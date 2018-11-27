@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :mentors, controllers: { sessions: 'mentors/sessions' }
+  devise_for :mentors, controllers: { sessions: 'mentors/sessions', registrations: 'mentors/registrations' }
   devise_for :prospectives
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
