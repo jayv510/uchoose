@@ -64,5 +64,6 @@ Prospective.create(
   nationality: Faker::Nation.nationality)
 
 
+puts "Seeding complete."
 
 
