@@ -3,7 +3,8 @@ class TokensController < ApplicationController
 
   def create
     # Define User Identity
-    identity = current_user.email
+    #
+    identity = current_mentor.email
 
     # Create Grant for Access Token
     grant = Twilio::JWT::AccessToken::ChatGrant.new

@@ -1,3 +1,10 @@
 import "bootstrap";
-import { loadDynamicBannerText } from '../components/banner';
-loadDynamicBannerText();
+import {Chat} from "components/chat.js"
+// import { loadDynamicBannerText } from '../components/banner';
+// loadDynamicBannerText();
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.querySelector(".chat")) {
+    window.chat = new Chat();
+  }
+});
