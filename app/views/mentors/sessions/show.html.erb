@@ -26,17 +26,21 @@
 
         <div class="col-xs-12 col-sm-8 col-md-8">
           <div class="profile-right">
-            <h2 id="major-cat"> <%= @mentor.major %> / <%= @mentor.university %> </h2>
-            <h3 id="major-deg"> <%= @mentor.major_category %> / <%= @mentor.degree_level %> </h3>
+            <h2 id="uni"><strong> <%= @mentor.university %> </strong></h2>
+
+            <h2 id="major"> Major: <%= @mentor.major %> </h2>
+            <h3 id="major-cat"> Category: <%= @mentor.major_category %> </h3>
+            <h3 id="level"> Level: <%= @mentor.degree_level %> </h3>
             <h3 id="nat"> <%= @mentor.nationality %> </h3>
 
             <div id="about-me">
-              <h3 id="about-me-title">About me</h3>
+              <h3 id="about-me-title"><i class="fas fa-smile"></i> About me</h3>
               <p><%= @mentor.description %> </p>
             </div>
 
             <div id="how">
-              <h3 id="how-title">How I can help</h3>
+
+              <h3 id="how-title"><i class="fas fa-hands-helping"> </i> How I can help</h3>
               <p> <%= @mentor.description_two %> </p>
             </div>
           </div>
