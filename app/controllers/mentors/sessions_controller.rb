@@ -28,7 +28,12 @@ class Mentors::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   def index
-    @mentors = Mentor.all
+    if params[:query].present?
+      @mentors = Mentor.search(params[:query])
+      @result = "Showing mentors matching \"#{params[:query]}\""
+    else
+      @mentors = Mentor.all
+    end
   end
 
   def show

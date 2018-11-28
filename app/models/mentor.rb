@@ -10,4 +10,6 @@ class Mentor < ApplicationRecord
   validates :university, presence: true
   validates :degree_level, presence: true
   validates :major_category, presence: true
+
+  searchkick
 end

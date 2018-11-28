@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'devise'
+gem 'searchkick', '~> 3.0'
 
 
 gem 'dotenv-rails', groups: [:development, :test]

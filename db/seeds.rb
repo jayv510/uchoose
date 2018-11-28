@@ -18,7 +18,7 @@ degree_levels = ["Undergraduate", "Honours", "Masters", "Doctoral", "Post-doctor
 
 puts "Generating fake mentors ..."
 
-20.times do
+100.times do
   Mentor.create(
     email: Faker::Internet.email,
     password: "123456",
