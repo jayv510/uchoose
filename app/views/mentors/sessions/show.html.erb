@@ -9,4 +9,5 @@ show.html.erb
 <%= @mentor.degree_level %>
 <%= @mentor.description %>
 <%= @mentor.description_two %>
+<%= cl_image_tag @mentor.photo, height: 300, width: 300, crop: :fill %>
 <%= link_to "Edit Profile", edit_mentor_path(@mentor) %>

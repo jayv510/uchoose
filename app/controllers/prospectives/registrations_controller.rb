@@ -39,14 +39,14 @@ class Prospectives::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :first_name, :last_name, :nationality])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :first_name, :last_name, :nationality, :photo])
   end
 
   # protected
   private
 
   def sign_up_params
-    params.require(:prospective).permit(:email, :password, :password_confirmation, :first_name, :last_name, :nationality)
+    params.require(:prospective).permit(:email, :password, :password_confirmation, :first_name, :last_name, :nationality, :photo)
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
