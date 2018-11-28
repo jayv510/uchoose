@@ -1,0 +1,36 @@
+<div class="navbar-wagon">
+  <!-- Logo -->
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <%= cl_image_tag("UCHOOSE_white.png") %>
+  <% end %>
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+    <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a>
+    <a href="" class="navbar-wagon-item navbar-wagon-link">Bookings</a>
+
+    <!-- Profile picture with dropdown list -->
+    <div class="navbar-wagon-item">
+      <div class="dropdown">
+       <%= image_tag "https://assets.vg247.com/current//2018/04/spiderman.jpg", class: "avatar dropdown-toggle", id: "navbar-wagas-menu", "data-toggle" => "dropdown" %>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Log Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dropdown appearing on mobile only -->
+  <div class="navbar-wagon-item hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li><a href="#">Messages</a></li>
+        <li><a href="#">Bookings</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

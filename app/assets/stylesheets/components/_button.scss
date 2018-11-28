@@ -1,0 +1,29 @@
+#button-home {
+  outline:none;
+  height: 50px;
+  text-align: center;
+  width: 170px;
+  border-radius:50px;
+  background: #F57170;
+  border: solid 1px #F57170;
+  color:white;
+  letter-spacing:1px;
+  font:{
+    size:15px;
+    weight:bold;
+  }
+  cursor: pointer;
+  transition: all 0.25s ease;
+  &:hover {
+    color:#F57170;
+    background: white;
+  }
+  &:active {
+    //letter-spacing: 2px;
+    letter-spacing: 2px ;
+  }
+  &:after {
+    content:"Find a Mentor";
+  }
+}
+
