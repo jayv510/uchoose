@@ -1,56 +1,27 @@
 <div class="navbar-wagas">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagas-brand" do %>
-    <%= cl_image_tag("logovan_white.png")%>
+  <%= cl_image_tag("UCHOOSE_white_coral.png") %>
   <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagas-right hidden-xs hidden-sm">
-     <%= link_to "See All Listings", spaces_path, class: "navbar-wagas-item navbar-wagas-link" %>
-  <%= link_to "List Your Space", new_space_path, class: "navbar-wagas-item navbar-wagas-link" %>
 
-    <% if user_signed_in? %>
+    <a href="" class="navbar-wagas-item navbar-wagas-link">Sign Up </a>
+    <a href="" class="navbar-wagas-item navbar-wagas-link">Log In</a>
 
-      <!-- Links when logged in -->
-      <%= link_to "My Bookings", "/bookings", class: "navbar-wagas-item navbar-wagas-link" %>
+    <!-- Profile picture with dropdown list -->
 
-      <!-- Avatar with dropdown menu -->
-      <div class="navbar-wagas-item">
-        <div class="dropdown">
-          <%= image_tag "https://assets.vg247.com/current//2018/04/spiderman.jpg", class: "avatar dropdown-toggle", id: "navbar-wagas-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagas-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
-    <% else %>
-      <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagas-item navbar-wagas-link" %>
-    <% end %>
   </div>
 
-  <!-- Dropdown list appearing on mobile only -->
+  <!-- Dropdown appearing on mobile only -->
   <div class="navbar-wagas-item hidden-md hidden-lg">
     <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagas-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <li><a href="#">Host</a></li>
+        <li><a href="#">Trips</a></li>
+        <li><a href="#">Messages</a></li>
       </ul>
     </div>
   </div>
