@@ -1,0 +1,58 @@
+// containers
+
+.container {
+  display: flex;
+}
+
+.body {
+  display: flex;
+  margin: 50px auto;
+}
+
+// Form styling
+
+.form-inputs {
+  width: 400px;
+  margin: 50px;
+  font-size: 18px;
+  color: #F57170;
+  border: 5px solid #F57170;
+  border-radius: 8px;
+  padding: 25px 45px;
+  box-shadow: 2px 2px 1px;
+  background-color: white;
+}
+
+.form-actions {
+  margin: 45px;
+}
+
+.btn {
+  border: 1px solid #F57170;
+  border-radius: 5px;
+  margin: 5px 50px;
+}
+
+// Card value styling
+
+
+.card-value {
+  width: 400px;
+  margin: 50px;
+  border: 5px solid #F57170;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 2px 2px 1px;
+}
+
+
+.card-value h2 {
+  font-size: 30px;
+  padding-left: 20px;
+}
+
+.card-value li {
+  padding: 20px;
+}
+

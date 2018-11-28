@@ -96,7 +96,6 @@ GEM
       sassc (>= 1.11)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    elastic-search
     hashie (3.6.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
