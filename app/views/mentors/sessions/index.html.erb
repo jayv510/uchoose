@@ -25,7 +25,14 @@
                 <div class="card-left">
 <!--                 <img src="https://www.gstatic.com/webp/gallery3/2.png" alt="mentor image" style="height: 120px"> -->
 
+                <% if mentor.photo.present? == true %>
                 <%= cl_image_tag mentor.photo, height: 160, width: 160, crop: :fill %>
+                <% else %>
+                <%= cl_image_tag("non_existing_id.jpg",
+                 :width => 160, :height => 160,
+                 :crop => :fill) %>
+                <% end %>
+
                 </div>
               </div>
 
