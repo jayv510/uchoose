@@ -1,13 +1,52 @@
-show.html.erb
 
-<%= @mentor.first_name %>
-<%= @mentor.last_name %>
-<%= @mentor.nationality %>
-<%= @mentor.university %>
-<%= @mentor.major_category %>
-<%= @mentor.major %>
-<%= @mentor.degree_level %>
-<%= @mentor.description %>
-<%= @mentor.description_two %>
-<%= cl_image_tag @mentor.photo, height: 300, width: 300, crop: :fill %>
-<%= link_to "Edit Profile", edit_mentor_path(@mentor) %>
+<div class="profile-card">
+
+  <div class="upper-container">
+    <div class="row">
+      <div class="col-xs-12">
+
+          <h1 id="profile-name"><%= @mentor.first_name.upcase %> <%= @mentor.last_name.upcase %></h1>
+
+      </div>
+    </div>
+  </div>
+
+   <div class="mid-container">
+      <div class="row">
+
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <div class="profile-left">
+            <img src="https://www.gstatic.com/webp/gallery3/2.png" alt="mentor image" style="height: 120px">
+            <p id="button-chat"> <a href="http://www.bing.com" class="btn-treehouse">Chat with <%= @mentor.first_name %> </a> </p>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-8 col-md-8">
+          <div class="profile-right">
+            <h2 id="major-cat"> <%= @mentor.major %> / <%= @mentor.university %> </h2>
+            <h3 id="major-deg"> <%= @mentor.major_category %> / <%= @mentor.degree_level %> </h3>
+            <h3 id="nat"> <%= @mentor.nationality %> </h3>
+
+            <div id="about-me">
+              <h3 id="about-me-title">About me</h3>
+              <p><%= @mentor.description %> </p>
+            </div>
+
+            <div id="how">
+              <h3 id="how-title">How I can help</h3>
+              <p> <%= @mentor.description_two %> </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="lower-container">
+    <div class="row">
+      <div class="col-xs-12">
+         <h3 id="edit-mentor"> <%= link_to "Edit Profile", edit_mentor_path(@mentor) %> </h3>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,83 @@
+#profile-name {
+  font-weight: 700;
+  font-size: 80px;
+  color: #003D5B;
+  padding: 15px 65px;
+}
+
+#major-cat {
+  font-size: 25px;
+  margin: 5px;
+}
+
+#major-deg {
+  font-size: 25px;
+  margin: 5px;
+}
+
+#nat {
+  font-size: 15px;
+  margin: 5px;
+}
+
+#about-me-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#about-me {
+  margin: 5px;
+}
+
+#how-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#how {
+  margin: 5px;
+}
+
+#edit-mentor {
+  padding-left: 65px;
+}
+
+#button-chat {
+  margin-top: 25px;
+}
+
+//---------CONTAINER for profile and positioning of right and left elements
+
+.upper-container {
+  display: flex;
+}
+
+.mid-container {
+  display: flex;
+}
+
+.lower-container {
+  display: flex;
+}
+
+.profile-left {
+  padding: 25px;
+  margin: 25px;
+  text-align: center;
+  width: 100%;
+}
+
+.profile-right {
+  padding: 5px 30px;
+  margin: 5px 30px;
+  text-align: justify;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid #F57170;
+  border-radius: 10px;
+  margin: 65px 100px;
+}
+
