@@ -1,13 +1,14 @@
 #button-home {
   outline:none;
-  height: 50px;
   text-align: center;
   width: 170px;
+  padding: 20px;
   border-radius:50px;
   background: #F57170;
   border: solid 1px #F57170;
   color:white;
   letter-spacing:1px;
+  text-decoration: none;
   font:{
     size:15px;
     weight:bold;
@@ -22,8 +23,6 @@
     //letter-spacing: 2px;
     letter-spacing: 2px ;
   }
-  &:after {
-    content:"Find a Mentor";
-  }
+
 }
 
