@@ -11,5 +11,6 @@ class Mentor < ApplicationRecord
   validates :degree_level, presence: true
   validates :major_category, presence: true
 
-  searchkick
+  mount_uploader :photo, PhotoUploader
+
 end
