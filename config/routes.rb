@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :mentors, controllers: { sessions: 'mentors/sessions', registrations: 'mentors/registrations' }
-  devise_for :prospectives
+  devise_for :prospectives, controllers: { sessions: 'prospectives/sessions', registrations: 'prospectives/registrations'}
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   devise_scope :mentor do
   get 'mentors', to: 'mentors/sessions#index'
   get 'mentors/:id', to: 'mentors/sessions#show', as: :mentor
-  get 'edit_mentor/:id/edit', to: 'mentors/sessions#edit', as: :mentor_edit
-  patch 'update_mentor/:id', to: 'mentors/sessions#update'
+  get 'mentors/:id/edit', to: 'mentors/sessions#edit', as: :edit_mentor
+  patch 'mentors/:id', to: 'mentors/sessions#update'
   end
 
 end

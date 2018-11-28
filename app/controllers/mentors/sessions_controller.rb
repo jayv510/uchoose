@@ -41,7 +41,7 @@ class Mentors::SessionsController < Devise::SessionsController
 
   def update
     @mentor = Mentor.find(params[:id])
-    @mentor.update(mentor_params)
+    @mentor.update!(mentor_params)
     redirect_to mentor_path(@mentor)
   end
 

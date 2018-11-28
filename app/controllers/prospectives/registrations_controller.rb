@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Prospectives::RegistrationsController < Devise::RegistrationsController
+    before_action :configure_sign_up_params, if: :devise_controller?
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -37,9 +38,16 @@ class Prospectives::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :first_name, :last_name, :nationality])
+  end
 
   # protected
+  private
 
+  def sign_up_params
+    params.require(:prospective).permit(:email, :password, :password_confirmation, :first_name, :last_name, :nationality)
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
