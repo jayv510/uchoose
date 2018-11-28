@@ -9,10 +9,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  transition: 1s background-color ease;
   h1{
     text-decoration:none;
   }
+}
+
+.navbar-wagon-white {
+  background-color: #F57170;
+  opacity:0.8;
 }
 
 /* Logo */

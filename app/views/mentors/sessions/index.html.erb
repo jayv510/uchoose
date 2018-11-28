@@ -1,7 +1,10 @@
 <div class="head">
-  <p>Place for navbar</p>
+  <div class="navbar-fixed-top">
+  <%= render 'shared/navbar_two' %>
+  </div>
 </div>
 
+<div class = "search">
 <%= form_tag mentors_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
@@ -9,6 +12,7 @@
     placeholder: "Search mentors"
   %>
 <% end %>
+</div>
 
 <h3><%= @result %></h3>
 
@@ -21,18 +25,19 @@
 
           <div class="row">
 
-              <div class="col-xs-3">
-                <div class="card-left">
-<!--                 <img src="https://www.gstatic.com/webp/gallery3/2.png" alt="mentor image" style="height: 120px"> -->
+
+            <div class="col-xs-3">
+              <div class="card-left">
+                <div class = "img">
 
                 <% if mentor.photo.present? == true %>
-                <%= cl_image_tag mentor.photo, height: 160, width: 160, crop: :fill %>
+                <%= cl_image_tag mentor.photo, height: 120, width: 120, crop: :fill %>
                 <% else %>
                 <%= cl_image_tag("non_existing_id.jpg",
-                 :width => 160, :height => 160,
+                 :width => 120, :height => 120,
                  :crop => :fill) %>
                 <% end %>
-
+                  </div>
                 </div>
               </div>
 
@@ -40,6 +45,7 @@
               <div class="card-center">
                 <h3 class="title"><%= mentor.first_name.upcase %> <%= mentor.last_name %></h3>
                 <h3 class="uni-maj"> <%= mentor.university %> / <%= mentor.major %> <%= mentor.degree_level %> </h3>
+                <p id = "description"> <%= mentor.description.first(80)%> ...</p>
                 <p id="link"> <%= link_to "More info", mentor_path(mentor) %> </p>
               </div>
             </div>
