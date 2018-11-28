@@ -48,6 +48,6 @@ class Mentors::SessionsController < Devise::SessionsController
   private
 
   def mentor_params
-    params.require(:mentor).permit(:email, :password, :first_name, :last_name, :nationality, :university, :major, :major_category, :degree_level, :description, :description_two, :rate)
+    params.require(:mentor).permit(:email, :password, :first_name, :last_name, :nationality, :university, :major, :major_category, :degree_level, :description, :description_two, :rate, :photo)
   end
 end
