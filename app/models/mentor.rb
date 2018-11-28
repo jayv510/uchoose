@@ -13,4 +13,5 @@ class Mentor < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
+  searchkick
 end

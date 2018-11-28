@@ -29,7 +29,12 @@ class Mentors::SessionsController < Devise::SessionsController
   # end
   def index
     if params[:query].present?
-      @mentors = Mentor.search(params[:query])
+      @mentors = Mentor.search(params[:query], {
+        fields: ["university^10", "major_category^5", "major^5", "nationality^3", "first_name", "last_name", "degree_level", "rate", "description", "description_two"],
+        # match: :exact,
+        misspellings: { edit_distance: 1, below: 5 },
+      })
+      # add adjustments to search here
       @result = "Showing mentors matching \"#{params[:query]}\""
     else
       @mentors = Mentor.all
