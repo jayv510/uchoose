@@ -1,4 +1,5 @@
 .home-banner {
+  display:flex;
   background-size: cover;
   background-position: center;
   opacity: 0.9;
@@ -6,4 +7,6 @@
   width: 100vw;
   text-align: center;
   color: #eee;
+  justify-content: space-around;
+  align-items: center;
 }

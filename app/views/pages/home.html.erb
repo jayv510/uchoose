@@ -1,13 +1,12 @@
 
-
+  <div class="navbar-fixed-top">
+    <%= render 'shared/navbar' %>
+  </div>
 <div class="home-banner" style= "background-image: url('<%= cl_image_path 'brooke-cagle-609873-unsplash.jpg' %>');">
 
-<div class="navbar-fixed-top">
-  <%= render 'shared/navbar' %>
-  </div>
-    <button id="button-home"></button>
 
-<a href="/mentors" id= "button-home"></a>
+  <%= link_to "Find mentors", mentors_path, id:"button-home" %>
+
 
 </div>
 

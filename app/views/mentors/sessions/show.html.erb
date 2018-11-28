@@ -1,3 +1,4 @@
+  <%= render 'shared/navbar_two' %>
 
 <div class="profile-card">
 
@@ -16,7 +17,9 @@
 
         <div class="col-xs-12 col-sm-4 col-md-4">
           <div class="profile-left">
-            <img src="https://www.gstatic.com/webp/gallery3/2.png" alt="mentor image" style="height: 120px">
+
+                <%= cl_image_tag "black-and-white-boy-casual-555790.jpg",height: 310, width: 300, class: "imgb" %>
+
             <p id="button-chat"> <a href="http://www.bing.com" class="btn-treehouse">Chat with <%= @mentor.first_name %> </a> </p>
           </div>
         </div>
