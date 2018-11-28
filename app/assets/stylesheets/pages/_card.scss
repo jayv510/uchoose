@@ -1,0 +1,62 @@
+.card {
+  display: flex;
+  border: 1px solid #F64543;
+  margin: 10px;
+  box-shadow: 2px 2px 2px;
+  border-radius: 8px;
+  width: 950px;
+}
+
+h3.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 5px;
+}
+
+h3.uni-maj {
+  font-size: 13px;
+  font-weight: 400;
+  margin: 5px;
+}
+
+#link {
+  margin: 5px;
+  font-size: 13px;
+}
+
+.card-left {
+  width: 50%;
+  margin: auto;
+  padding: 15 5px;
+}
+
+.card-center {
+  width: 450px;
+  padding-top: 15px;
+}
+
+.card-right {
+  width: 300px;
+  padding: 40px 0px;
+}
+
+.btn-treehouse {
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: #F57170;
+  transition: background 0.3s ease;
+}
+
+.btn-treehouse:hover {
+  opacity: 1;
+  background: #F64543;
+  text-decoration: none;
+  color: white;
+}
+
+
+
+
+

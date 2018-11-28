@@ -1,0 +1,14 @@
+<h1> Edit your listing </h1>
+
+<%= simple_form_for @mentor do |f| %>
+    <%= f.input :first_name%>
+    <%= f.input :last_name%>
+    <%= f.input :nationality%>
+    <%= f.input :university%>
+    <%= f.input :major_category%>
+    <%= f.input :major%>
+    <%= f.input :degree_level%>
+    <%= f.input :description%>
+    <%= f.input :description_two%>
+<%= f.submit %>
+<% end %>

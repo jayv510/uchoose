@@ -1,0 +1,41 @@
+<div class="head">
+  <p>Place for navbar</p>
+</div>
+
+
+  <div class="container">
+
+    <div class="col-xs-12">
+        <% @mentors.each do |mentor| %>
+          <div class="card">
+
+            <div class="row">
+
+              <div class="col-xs-3">
+                <div class="card-left">
+                <img src="https://www.gstatic.com/webp/gallery3/2.png" alt="mentor image" style="height: 120px">
+                </div>
+              </div>
+
+              <div class="col-xs-6">
+                <div class="card-center">
+                  <h3 class="title"><%= mentor.first_name.upcase %> <%= mentor.last_name %></h3>
+                  <h3 class="uni-maj"> <%= mentor.university %> / <%= mentor.major %> <%= mentor.degree_level %> </h3>
+                  <p id="link"> <%= link_to "More info", mentor_path(mentor) %> </p>
+                </div>
+              </div>
+
+              <div class="col-xs-3">
+                <div class="card-right">
+                  <a href="http://www.bing.com" class="btn-treehouse">View profile</a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        <% end %>
+    </div>
+
+  </div>
+

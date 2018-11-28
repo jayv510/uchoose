@@ -1,0 +1,28 @@
+<div class="navbar-wagas">
+  <!-- Logo -->
+  <%= link_to root_path, class: "navbar-wagas-brand" do %>
+  <%= cl_image_tag("UCHOOSE_white_coral.png") %>
+  <% end %>
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagas-right hidden-xs hidden-sm">
+
+    <a href="" class="navbar-wagas-item navbar-wagas-link">Sign Up </a>
+    <a href="" class="navbar-wagas-item navbar-wagas-link">Log In</a>
+
+    <!-- Profile picture with dropdown list -->
+
+  </div>
+
+  <!-- Dropdown appearing on mobile only -->
+  <div class="navbar-wagas-item hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagas-dropdown-menu">
+        <li><a href="#">Host</a></li>
+        <li><a href="#">Trips</a></li>
+        <li><a href="#">Messages</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
