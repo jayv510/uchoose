@@ -3,7 +3,7 @@ export class Chat {
     this.channel = null;
     this.client = null;
     this.identity = null;
-    this.messages = ["Connecting..."];
+    this.messages = ["I'm Dr. Evil...", "Loading..."];
     this.initialize();
   }
 
@@ -15,7 +15,6 @@ export class Chat {
       type: "POST",
       success: data => {
         this.identity = data.identity;
-
         Twilio.Chat.Client
           .create(data.token)
           .then(client => this.setupClient(client));
@@ -33,6 +32,7 @@ export class Chat {
 
   setupChannel(channel) {
     this.channel = channel;
+    console.log(channel)
     this.joinChannel();
     this.addMessage({ body: `Joined general channel as ${this.identity}` });
     this.channel.on("messageAdded", message => this.addMessage(message));
@@ -46,7 +46,8 @@ export class Chat {
       .catch((error) => {
         this.client.createChannel({
           uniqueName: "general",
-          friendlyName: "General Chat Channel"
+          friendlyName: "General Chat Channel",
+          isPrivate: true
         }).then((channel) => this.setupChannel(channel));
       });
   }
@@ -80,6 +81,12 @@ export class Chat {
       this.channel.sendMessage(input.value);
       input.value = "";
       return false;
+    })
+  }
+
+  inviteFriends() {
+    myChannel.invite('elmo').then(function() {
+      console.log('Your friend has been invited!');
     })
   }
 };
