@@ -2,40 +2,58 @@
   <p>Place for navbar</p>
 </div>
 
+<%= form_tag mentors_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search mentors"
+  %>
+<% end %>
 
-  <div class="container">
+<h3><%= @result %></h3>
 
-    <div class="col-xs-12">
-        <% @mentors.each do |mentor| %>
-          <div class="card">
+<%= link_to "See all mentors", mentors_path %>
 
-            <div class="row">
+<div class="container">
+  <div class="col-xs-12">
+      <% @mentors.each do |mentor| %>
+        <div class="card">
+
+          <div class="row">
 
               <div class="col-xs-3">
                 <div class="card-left">
-                <img src="https://www.gstatic.com/webp/gallery3/2.png" alt="mentor image" style="height: 120px">
+<!--                 <img src="https://www.gstatic.com/webp/gallery3/2.png" alt="mentor image" style="height: 120px"> -->
+
+                <% if mentor.photo.present? == true %>
+                <%= cl_image_tag mentor.photo, height: 160, width: 160, crop: :fill %>
+                <% else %>
+                <%= cl_image_tag("non_existing_id.jpg",
+                 :width => 160, :height => 160,
+                 :crop => :fill) %>
+                <% end %>
+
                 </div>
               </div>
 
-              <div class="col-xs-6">
-                <div class="card-center">
-                  <h3 class="title"><%= mentor.first_name.upcase %> <%= mentor.last_name %></h3>
-                  <h3 class="uni-maj"> <%= mentor.university %> / <%= mentor.major %> <%= mentor.degree_level %> </h3>
-                  <p id="link"> <%= link_to "More info", mentor_path(mentor) %> </p>
-                </div>
+            <div class="col-xs-6">
+              <div class="card-center">
+                <h3 class="title"><%= mentor.first_name.upcase %> <%= mentor.last_name %></h3>
+                <h3 class="uni-maj"> <%= mentor.university %> / <%= mentor.major %> <%= mentor.degree_level %> </h3>
+                <p id="link"> <%= link_to "More info", mentor_path(mentor) %> </p>
               </div>
+            </div>
 
-              <div class="col-xs-3">
-                <div class="card-right">
-                  <a href="http://www.bing.com" class="btn-treehouse">View profile</a>
-                </div>
+            <div class="col-xs-3">
+              <div class="card-right">
+                <a href="http://www.bing.com" class="btn-treehouse">View profile</a>
               </div>
-
             </div>
 
           </div>
-        <% end %>
-    </div>
 
+        </div>
+      <% end %>
   </div>
 
+</div>

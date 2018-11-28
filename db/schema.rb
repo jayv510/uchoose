@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2018_11_28_023803) do
 ActiveRecord::Schema.define(version: 2018_11_27_072439) do
 
   # These are extensions that must be enabled in order to support this database
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 2018_11_27_072439) do
     t.integer "rate"
     t.text "description_two"
     t.string "major_category"
+    t.string "photo"
     t.index ["email"], name: "index_mentors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_mentors_on_reset_password_token", unique: true
   end
@@ -60,6 +62,7 @@ ActiveRecord::Schema.define(version: 2018_11_27_072439) do
     t.string "first_name"
     t.string "last_name"
     t.string "nationality"
+    t.string "photo"
     t.index ["email"], name: "index_prospectives_on_email", unique: true
     t.index ["reset_password_token"], name: "index_prospectives_on_reset_password_token", unique: true
   end

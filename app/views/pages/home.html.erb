@@ -1,4 +1,17 @@
+
+
+<div class="home-banner" style= "background-image: url('<%= cl_image_path 'brooke-cagle-609873-unsplash.jpg' %>');">
+
+
+  <%= render 'shared/navbar' %>
+    <button id="button-home"></button>
+
+
+</div>
+
+
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 <%= link_to('Logout', destroy_mentor_session_path, method: :delete) %>
 <%= link_to'Sign up as a Mentor', new_mentor_registration_path %>
+
