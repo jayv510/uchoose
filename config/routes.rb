@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   patch 'mentors/:id', to: 'mentors/sessions#update'
   end
 
+  resources :chats, only: [:show]
+  resources :tokens, only: [:create]
 end
