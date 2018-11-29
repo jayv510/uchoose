@@ -13,5 +13,13 @@ class Mentor < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
-  searchkick
+  # searchkick
+
+           include PgSearch
+      pg_search_scope :search,
+        against: [ :university, :major, :major_category, :first_name, :last_name, :degree_level ],
+        using: {
+          tsearch: { prefix: true } # <-- now `superman batm` will return something!
+        }
+
 end

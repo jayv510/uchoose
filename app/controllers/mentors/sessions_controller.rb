@@ -29,19 +29,39 @@ class Mentors::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   def index
+    # def search_data
+    #       {
+    #   all: [:university, :major, :major_category, :nationality, :first_name, :last_name].join(" ")
+    # }
+    # end
+
     if params[:query].present?
-      @mentors = Mentor.search(params[:query],
-       {
+            # @mentors = Mentor.where('university LIKE params[:query] OR major LIKE params[:query] OR major_category LIKE params[:query] OR first_name LIKE params[:query] OR last_name LIKE params[:query]', params[:query] == "%#{query}%")
+
+      @mentors = Mentor.search(params[:query])
+
+        # -----elastic search----
+        # ,{
+        # fields: ["university^10", "major_category^5", "major^5", "nationality^3", "first_name", "last_name", "degree_level", "rate", "description", "description_two"],
+        # operator: "OR",
+        # match: :word_start,
+        # all: [:university, :major, :major_category, :nationality, :first_name, :last_name].join(" "),
+        # misspellings: { edit_distance: 1, below: 5 },
+      #   # aggs: [:university, :nationality, :major_category, :major, :first_name, :last_name, :degree_level]
+      # })
+      @mentors = Mentor.search(params[:query])
+        # ,{
         # index: "analyzed",
         # fields: [:university, :major_category, :major, :nationality, :first_name, :last_name, :degree_level],
 
-        fields: ["university^10", "major_category^5", "major^5", "nationality^3", "first_name", "last_name", "degree_level", "rate", "description", "description_two"],
-        # match: :word_start,
-        misspellings: { edit_distance: 1, below: 5 },
-        aggs: [:university, :nationality, :major_category, :major, :first_name, :last_name, :degree_level]
-      })
+      #   fields: ["university^10", "major_category^5", "major^5", "nationality^3", "first_name", "last_name", "degree_level", "rate", "description", "description_two"],
+      #   # match: :word_start,
+      #   misspellings: { edit_distance: 1, below: 5 },
+      #   aggs: [:university, :nationality, :major_category, :major, :first_name, :last_name, :degree_level]
+      # })
       # add adjustments to search here
       @result = "Showing mentors matching \"#{params[:query]}\""
+
     else
       @mentors = Mentor.all
     end
