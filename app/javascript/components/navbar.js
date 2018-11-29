@@ -11,6 +11,4 @@ function initUpdateNavbarOnScroll() {
   }
 }
 
-
-
 export { initUpdateNavbarOnScroll };

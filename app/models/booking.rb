@@ -4,5 +4,5 @@ class Booking < ApplicationRecord
   has_many :reviews
   validates :start_datetime, presence: true
   validates :end_datetime, presence: true
-  validates :total_cost, presence: true, numerical: true
+  validates :total_cost, presence: true
 end
