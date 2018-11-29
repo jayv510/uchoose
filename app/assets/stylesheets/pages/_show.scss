@@ -70,6 +70,9 @@
 
 .mid-container {
   display: flex;
+   @media (max-width: 1100px) {
+    width: 80%;
+ }
 }
 
 .lower-container {
@@ -81,7 +84,13 @@
   margin: 17px;
   text-align: center;
   width: 100%;
+
+  @media (max-width: 1100px) {
+    width: 80%;
+ }
 }
+
+
 
 .profile-right {
   padding: 5px 30px;
@@ -94,8 +103,10 @@
   border: 5px solid #F57170;
   border-radius: 10px;
   margin: 65px 100px;
-  box-shadow: 2px 2px 1px;
+  box-shadow: 2px 2px 1px #F57170;
   background-color: white;
+  min-height: 100%;
+  position: relative;
 }
 
 .imgb {
@@ -140,6 +151,10 @@
   font-family: poppins;
 }
 
+.message {
+  font-size: 15px;
+}
+
 #message {
   flex-grow: 1;
   margin-right: 1%;
@@ -147,7 +162,7 @@
   border-radius: 8px;
   height: 35px;
   text-indent: 12px;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 #btn-send {
@@ -162,3 +177,56 @@
   color: white;
   background: #428cc4;
 }
+
+
+// ------------------- FOOTER styling
+
+.footer {
+  background: #F57170;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: white;
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+.footer-links a {
+  color: white;
+  opacity: 0.8;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+.footer .fa-heart {
+  color: white;
+  opacity: 0.8;
+}
+
+
+
+//------------INDEX FOOTER styling
+
+.container {
+  height: 100%;
+}
+
+.index-footer {
+  background: #F57170;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: white;
+  clear: both;
+  width: 100%;
+  margin-top: 120px;
+}
+
