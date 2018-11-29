@@ -10,3 +10,66 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.stuff {
+  justify-content: center;
+  padding: 50px;
+}
+
+.stuff h1 {
+  padding: 15px;
+  font-size: 50px;
+}
+.stuff p {
+  padding-bottom: 30px;
+
+}
+
+
+.wolf {
+  justify-content: space-around;
+  text-align:center;
+}
+
+.wolf h1 {
+  padding-bottom: 15px;
+}
+
+.alone {
+  justify-content: space-around;
+  text-align:center;
+  padding-top: 70px;
+
+}
+.alone h1 {
+  padding-bottom: 5px;
+
+}
+
+.pho h1 {
+  color: #F57170;
+}
+.banner {
+  display:flex;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.9;
+  height: 20vh;
+  margin-top: 5vh;
+  padding-top: 5vh;
+  width: 100vw;
+  text-align: center;
+  color: #eee;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+}
+
+.search {
+  width: 100%;
+  margin-top: 5vh;
+  padding: 350px 100px;
+}

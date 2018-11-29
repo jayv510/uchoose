@@ -17,7 +17,7 @@
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li><a href="#">Profile</a></li>
           <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Log Out</a></li>
+          <li><a href="#"><%= link_to('Logout', destroy_mentor_session_path, method: :delete) %></a></li>
         </ul>
       </div>
     </div>

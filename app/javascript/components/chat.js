@@ -3,7 +3,7 @@ export class Chat {
     this.channel = null;
     this.client = null;
     this.identity = null;
-    this.messages = ["Preparing your chat! ..."];
+    this.messages = ["Waiting on carrier pigeon ..."];
     this.initialize();
   }
 
@@ -32,21 +32,32 @@ export class Chat {
 
   setupChannel(channel) {
     this.channel = channel;
-    console.log(channel)
+
+    var self = this;
+    this.channel.getMessages(100).then(function(messages) {
+    const totalMessages = messages.items.length;
+    for (var i = 0; i < totalMessages; i++) {
+      const message = messages.items[i];
+      self.addMessage(message);
+    }
+    });
+
     this.joinChannel();
-    this.addMessage({ body: `Joined general channel as ${this.identity}` });
+    this.addMessage({ body: `Joined chat as ${this.identity}` });
     this.channel.on("messageAdded", message => this.addMessage(message));
     this.setupForm();
   }
 
   setupClient(client) {
     this.client = client;
-    this.client.getChannelByUniqueName("general")
+    let channelID = document.getElementsByClassName("chat")[0].id;
+    console.log(channelID);
+    this.client.getChannelByUniqueName(`${channelID}`)
       .then((channel) => this.setupChannel(channel))
       .catch((error) => {
         this.client.createChannel({
-          uniqueName: "general",
-          friendlyName: "General Chat Channel",
+          uniqueName: `${channelID}`,
+          friendlyName: `Chat ${channelID}`,
           isPrivate: true
         }).then((channel) => this.setupChannel(channel));
       });
@@ -90,3 +101,4 @@ export class Chat {
   //   })
   // }
 };
+
