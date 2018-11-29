@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   get 'chats', to: 'chats#show'
 
   resources :tokens, only: [:create]
+
 end
