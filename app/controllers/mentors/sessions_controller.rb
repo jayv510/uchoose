@@ -33,6 +33,7 @@ class Mentors::SessionsController < Devise::SessionsController
         fields: ["university^10", "major_category^5", "major^5", "nationality^3", "first_name", "last_name", "degree_level", "rate", "description", "description_two"],
         # match: :exact,
         misspellings: { edit_distance: 1, below: 5 },
+        aggs: [:university, :nationality, :major_category, :major, :first_name, :last_name, :degree_level]
       })
       # add adjustments to search here
       @result = "Showing mentors matching \"#{params[:query]}\""
