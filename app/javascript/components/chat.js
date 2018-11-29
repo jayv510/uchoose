@@ -34,7 +34,6 @@ export class Chat {
     this.channel = channel;
 
     var self = this;
-    // //
     this.channel.getMessages(100).then(function(messages) {
     const totalMessages = messages.items.length;
     for (var i = 0; i < totalMessages; i++) {
@@ -51,17 +50,16 @@ export class Chat {
 
   setupClient(client) {
     this.client = client;
-    let channelID = document.getElementsByClassName("chat").id;
+    let channelID = document.getElementsByClassName("chat")[0].id;
     console.log(channelID);
-    this.client.getChannelByUniqueName("general")
+    this.client.getChannelByUniqueName(`${channelID}`)
       .then((channel) => this.setupChannel(channel))
       .catch((error) => {
         this.client.createChannel({
-          uniqueName: "general",
-          friendlyName: "General Chat Channel",
+          uniqueName: `${channelID}`,
+          friendlyName: `Chat ${channelID}`,
           isPrivate: true
         }).then((channel) => this.setupChannel(channel));
-        console.log(channel)
       });
   }
 
