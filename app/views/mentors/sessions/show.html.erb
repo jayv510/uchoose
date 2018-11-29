@@ -18,7 +18,13 @@
         <div class="col-xs-12 col-sm-4 col-md-4">
           <div class="profile-left">
 
-                <%= cl_image_tag "black-and-white-boy-casual-555790.jpg",height: 310, width: 300, class: "imgb" %>
+            <% if @mentor.photo.present? == true %>
+              <%= cl_image_tag @mentor.photo, height: 300, width: 300, crop: :fill %>
+              <% else %>
+              <%= cl_image_tag("non_existing_id.jpg",
+              :width => 300, :height => 300,
+              :crop => :fill) %>
+            <% end %>
 
             <button type="button" class="button-chat btn-treehouse" id="startChat" data-toggle="modal" data-target="#myModal"> Chat with <%= @mentor.first_name %> </button>
           </div>
@@ -31,7 +37,7 @@
             <h2 id="major"> Major: <%= @mentor.major %> </h2>
             <h3 id="major-cat"> Category: <%= @mentor.major_category %> </h3>
             <h3 id="level"> Level: <%= @mentor.degree_level %> </h3>
-            <h3 id="nat"> <%= @mentor.nationality %> </h3>
+            <h3 id="nat"> Nationality: <%= @mentor.nationality %> </h3>
 
             <div id="about-me">
               <h3 id="about-me-title"><i class="fas fa-smile"></i> About me</h3>
