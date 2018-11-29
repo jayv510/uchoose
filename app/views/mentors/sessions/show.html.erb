@@ -29,6 +29,8 @@
               <% end %>
 
               <button type="button" class="button-chat btn-treehouse" id="startChat" data-toggle="modal" data-target="#myModal"> Chat with <%= @mentor.first_name %> </button>
+
+              <h3 id="go-back"> <%= link_to "Back to mentors", mentors_path %> </h3>
             </div>
           </div>
 
@@ -81,7 +83,6 @@
   </div>
 
 </div>
-
 
 <!-- Chat modal -->
   <div id="myModal" class="modal fade" role="dialog">
