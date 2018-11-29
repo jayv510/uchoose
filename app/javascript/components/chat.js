@@ -75,7 +75,7 @@ export class Chat {
 
     if (message.author) {
       const className = message.author == this.identity ? "user me" : "user";
-      html += `<span class="${className}">${message.author}: </span>`;
+      html += `<strong><span class="${className}">${message.author}: </span></strong>`;
     }
 
     html += message.body;
