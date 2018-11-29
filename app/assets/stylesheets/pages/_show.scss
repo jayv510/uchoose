@@ -103,11 +103,16 @@
 .chat-window {
   height: 500px;
   width: 100%;
-  border: 1px solid black;
+  border: 1px solid #F57170;
+  border-radius: 8px;
   margin: 0;
   padding: 0;
 }
 
+.modal-header {
+  border-bottom: 1px solid #F57170;
+  background-color: #F57170;
+}
 
 .modal-footer {
   position: fixed;
@@ -115,13 +120,39 @@
   left: 0;
   width: 100%;
   text-align: left;
+  border-top: 1px solid #F57170;
+  background-color: #F57170;
+  border-radius: 0px 0px 8px 8px;
 }
 
 .chat-form {
   display: flex;
 }
 
+.modal-title {
+  color: white;
+  font-family: poppins;
+}
+
 #message {
   flex-grow: 1;
   margin-right: 1%;
+  border: 1px solid #F57170;
+  border-radius: 8px;
+  height: 35px;
+  text-indent: 12px;
+  font-size: 12px;
+}
+
+#btn-send {
+  border: 1px solid #F57170;
+  border-radius: 8px;
+  color: white;
+  background-color: #5b98c9;
+  height: 35px;
+}
+
+#btn-send:hover {
+  color: white;
+  background: #428cc4;
 }

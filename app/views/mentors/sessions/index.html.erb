@@ -1,3 +1,5 @@
+
+
 <div id = "list-color">
 <div class="head">
   <div class="navbar-fixed-top">
@@ -5,14 +7,19 @@
   </div>
 </div>
 
-<div class = "search">
-<%= form_tag mentors_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Search mentors"
-  %>
-<% end %>
+
+
+ <div class="banner" style= "background-image: url('<%= cl_image_path 'figures.png' %>');">
+    <div class = "search">
+    <%= form_tag mentors_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Search universities, majors, mentors.."
+      %>
+    <% end %>
+    </div>
+
 </div>
 
 <h3><%= @result %></h3>

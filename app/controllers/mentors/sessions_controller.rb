@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Mentors::SessionsController < Devise::SessionsController
+    # before_action :authenticate_prospective!
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -29,9 +30,13 @@ class Mentors::SessionsController < Devise::SessionsController
   # end
   def index
     if params[:query].present?
-      @mentors = Mentor.search(params[:query], {
+      @mentors = Mentor.search(params[:query],
+       {
+        # index: "analyzed",
+        # fields: [:university, :major_category, :major, :nationality, :first_name, :last_name, :degree_level],
+
         fields: ["university^10", "major_category^5", "major^5", "nationality^3", "first_name", "last_name", "degree_level", "rate", "description", "description_two"],
-        # match: :exact,
+        # match: :word_start,
         misspellings: { edit_distance: 1, below: 5 },
         aggs: [:university, :nationality, :major_category, :major, :first_name, :last_name, :degree_level]
       })

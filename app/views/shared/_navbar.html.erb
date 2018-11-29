@@ -7,8 +7,24 @@
   <!-- Right Navigation -->
   <div class="navbar-wagas-right hidden-xs hidden-sm">
 
-    <a href="" class="navbar-wagas-item navbar-wagas-link">Sign Up </a>
-    <a href="" class="navbar-wagas-item navbar-wagas-link">Log In</a>
+  <div class="dropdown">
+    <a class="dropdown-toggle navbar-wagas-item navbar-wagas-link" id="navbarDropdown" role="button" data-toggle="dropdown">Sign Up</a>
+    <ul class="dropdown-menu">
+      <li class= "navbar-wagas-item navbar-wagas-link"><%= link_to'As a Prospective Student', new_prospective_registration_path %></li>
+      <li class= "navbar-wagas-item navbar-wagas-link"><%= link_to'As a Mentor', new_mentor_registration_path %></li>
+    </ul>
+  </div>
+
+   <div class="dropdown">
+    <a class="dropdown-toggle navbar-wagas-item navbar-wagas-link" id="navbarDropdown" role="button" data-toggle="dropdown">Log in</a>
+    <ul class="dropdown-menu">
+      <li class= "navbar-wagas-item navbar-wagas-link"><%= link_to'As a Prospective Student', new_prospective_session_path %></li>
+      <li class= "navbar-wagas-item navbar-wagas-link"><%= link_to'As a Mentor', new_prospective_session_path %></li>
+    </ul>
+  </div>
+
+
+  <a href="" class="navbar-wagas-item navbar-wagas-link">Help</a>
 
     <!-- Profile picture with dropdown list -->
 
