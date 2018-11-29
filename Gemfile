@@ -23,8 +23,7 @@ gem 'searchkick', '~> 3.0'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'twilio-ruby'
 gem 'pundit'
-
-
+gem 'faker'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -37,5 +36,4 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails', groups: [:development, :test]
-  gem 'faker'
 end
