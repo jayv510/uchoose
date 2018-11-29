@@ -14,20 +14,28 @@
   background:transparent;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
 
+  @media (max-width: 1100px) {
+    height: 300px;
+    width: 200px;
+ }
 }
 
 .card-home-one {
-  height: 350px;
+  height: 260px;
   justify-content:center;
   text-shadow: 0 2px 4px rgba(0,0,0,0.8);
   background-size: cover !important;
   background-position: center;
-  color: #F57170;
+  color: white;
   border-radius: 10px;
   padding: 20px;
   display:flex;
   align-items: center;
   background:transparent;
+
+   @media (max-width: 1150px) {
+    height: 180px;
+ }
 
 }
 
@@ -38,10 +46,14 @@
   height: 100vh;
   display:flex;
 
+   @media (max-width: 1100px) {
+    height: 140vh;
+ }
+
 }
 
 .wrapper-one h1 {
-  color: #F57170;
+  color: white;
 
 }
 
@@ -82,6 +94,7 @@
   height: 70vh;
   display:flex;
 
+
 }
 
 .wrapper-two {
@@ -90,6 +103,9 @@
   margin:0;
   height: 70vh;
   display:flex;
+   @media (max-width: 1100px) {
+    height: 100vh;
+ }
 
 }
 
