@@ -1,23 +1,140 @@
 
-  <div class="navbar-fixed-top">
-    <%= render 'shared/navbar' %>
-  </div>
-<div class="home-banner" style= "background-image: url('<%= cl_image_path 'brooke-cagle-609873-unsplash.jpg' %>');">
-
-
-  <%= link_to "Find mentors", mentors_path, id:"button-home" %>
-
+<div class="navbar-fixed-top">
+  <%= render 'shared/navbar' %>
+  <ul id="top-menu">
+    <li><a href="#one" class="links">Home</a></li>
+    <li><a href="#two" class="links">Process</a></li>
+    <li><a href="#three" class="links">Features</a></li>
+    <li><a href="#four" class="links">Values</a></li>
+  </ul>
 
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <%= "Lorem ipsum dolor sit amet, consectetur adipisicing elit " * 100 %>
+
+
+<div class="home-banner" style= "background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path 'brooke-cagle-609873-unsplash.jpg' %>');" id= "one">
+  <div class= "stuff">
+    <h1>Make a better-informed choice about your future US university</h1>
+    <p><span id="banner-typed-text"></span></p>
+
+    <%= link_to "Find mentors", mentors_path, id:"button-home" %>
+  </div>
+
+</div>
+
+
+
+<div class = "wrapper" id= "two">
+  <div class="container" id= "home-container">
+    <div class = "wolf">
+      <h1>Process</h1>
+      <div class="row">
+        <div class="col-xs-12 col-md-4 flex-item">
+          <div class="card-home">
+            <div class="card-description">
+              <i class="fas fa-university fa-5x"></i>
+              <h2> Search a university or a major</h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4 flex-item">
+          <div class="card-home" >
+            <div class="card-description">
+              <i class="fas fa-user-circle fa-5x"></i>
+              <h2>Check our mentors’ profiles</h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4 flex-item">
+          <div class="card-home" >
+            <div class="card-description">
+              <i class="fas fa-comments fa-5x"></i>
+              <h2>Chat with them!</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
+<div class = "wrapper-one" style= "background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('<%= cl_image_path 'adult-business-meeting-business-people-1438072.jpg' %>');" id= "three">
+  <div class="container" id= "home-container">
+    <div class = "alone">
+      <h1>Features</h1>
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+          <div class="card-home-one">
+            <div class="card-description-one">
+              <i class="fas fa-user-secret fa-5x"></i>
+              <h2>Private Chat, true one on one experience</h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <div class="card-home-one" >
+            <div class="card-description-one">
+              <i class="fas fa-yen-sign fa-5x"></i>
+              <h2>Affordable Price, 1/10000 of the price of a consulting agency</h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <div class="card-home-one" >
+            <div class="card-description-one">
+              <i class="fas fa-globe fa-5x"></i>
+              <h2>Filtered mentors from top universities around the world</h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <div class="card-home-one" >
+            <div class="card-description-one">
+              <i class="fas fa-info-circle fa-5x"></i>
+              <h2>Ask all your questions here!</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class = "wrapper-two" id= "four">
+  <div class="container" id= "home-container">
+    <div class = "pho">
+      <h1>Our core values</h1>
+      <div class="row">
+        <div class="col-xs-12 col-md-4">
+          <div class="card-home-two">
+            <div class="card-description-two">
+              <i class="fas fa-university fa-5x"></i>
+              <h2> Don’t make big decisions alone</h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="card-home-two" >
+            <div class="card-description-two">
+              <i class="fas fa-user-circle fa-5x"></i>
+              <h2>Widen your perspective</h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="card-home-two" >
+            <div class="card-description-two">
+              <i class="fas fa-comments fa-5x"></i>
+              <h2>Talk to people who’ve been in your situation</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 
 <h1>Pages#home</h1>

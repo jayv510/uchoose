@@ -14,4 +14,7 @@ document.getElementById('startChat').addEventListener("click", () => {
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 initUpdateNavbarOnScroll();
 
+import { loadDynamicBannerText } from '../components/banner';
+loadDynamicBannerText();
+
 
