@@ -3,7 +3,7 @@ export class Chat {
     this.channel = null;
     this.client = null;
     this.identity = null;
-    this.messages = ["I'm Dr. Evil...", "Loading..."];
+    this.messages = ["Preparing your chat! ..."];
     this.initialize();
   }
 
@@ -84,9 +84,9 @@ export class Chat {
     })
   }
 
-  inviteFriends() {
-    myChannel.invite('elmo').then(function() {
-      console.log('Your friend has been invited!');
-    })
-  }
+  // inviteFriends() {
+  //   myChannel.invite('elmo').then(function() {
+  //     console.log('Your friend has been invited!');
+  //   })
+  // }
 };

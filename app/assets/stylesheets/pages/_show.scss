@@ -42,7 +42,7 @@
   padding-left: 65px;
 }
 
-#button-chat {
+.button-chat {
   margin-top: 25px;
 }
 
@@ -86,5 +86,23 @@
 .imgb {
   border-radius: 5px;
   padding-bottom: 20px;
+}
+
+.chat-window {
+  height: 500px;
+  width: 50vw;
+  border: 1px solid black;
+}
+
+.message-line {
+  font-size: 15px;
+}
+
+.chat-window-title {
+  width: 100%;
+  text-align: center;
+  color: red;
+  font-size: 20px;
+  margin: 10px;
 }
 
