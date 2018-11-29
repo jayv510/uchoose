@@ -1,4 +1,3 @@
-
 <div class="navbar-fixed-top">
   <%= render 'shared/navbar' %>
   <ul id="top-menu">
@@ -10,8 +9,6 @@
 
 </div>
 
-
-
 <div class="home-banner" style= "background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path 'brooke-cagle-609873-unsplash.jpg' %>');" id= "one">
   <div class= "stuff">
     <h1>Make a better-informed choice about your future US university</h1>
@@ -21,8 +18,6 @@
   </div>
 
 </div>
-
-
 
 <div class = "wrapper" id= "two">
   <div class="container" id= "home-container">
@@ -136,8 +131,15 @@
 </div>
 
 
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= link_to('Logout', destroy_mentor_session_path, method: :delete) %>
-<%= link_to'Sign up as a Mentor', new_mentor_registration_path %>
-
+<div class="footer">
+  <div class="footer-links">
+    <a href="http://www.github.com"><i class="fab fa-github"></i></a>
+    <a href="http://www.instagram.com"><i class="fab fa-instagram"></i></a>
+    <a href="http://www.facebook.com"><i class="fab fa-facebook"></i></a>
+    <a href="http://www.twitter.com"><i class="fab fa-twitter"></i></a>
+    <a href="http://www.linkedin.com"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    Made with <i class="fas fa-heart"></i> by Le Decisive
+  </div>
+</div>

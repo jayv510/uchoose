@@ -97,8 +97,10 @@
   border: 5px solid #F57170;
   border-radius: 10px;
   margin: 65px 100px;
-  box-shadow: 2px 2px 1px;
+  box-shadow: 2px 2px 1px #F57170;
   background-color: white;
+  min-height: 100%;
+  position: relative;
 }
 
 .imgb {
@@ -169,3 +171,56 @@
   color: white;
   background: #428cc4;
 }
+
+
+// ------------------- FOOTER styling
+
+.footer {
+  background: #F57170;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: white;
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+.footer-links a {
+  color: white;
+  opacity: 0.8;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+.footer .fa-heart {
+  color: white;
+  opacity: 0.8;
+}
+
+
+
+//------------INDEX FOOTER styling
+
+.container {
+  height: 100%;
+}
+
+.index-footer {
+  background: #F57170;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: white;
+  clear: both;
+  width: 100%;
+  margin-top: 120px;
+}
+
