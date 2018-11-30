@@ -17,7 +17,7 @@ class Mentor < ApplicationRecord
 
            include PgSearch
       pg_search_scope :search,
-        against: [ :university, :major, :major_category, :first_name, :last_name, :degree_level ],
+        against: [ :university, :nationality, :major, :major_category, :first_name, :last_name, :degree_level ],
         using: {
           tsearch: { prefix: true } # <-- now `superman batm` will return something!
         }
