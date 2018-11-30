@@ -68,12 +68,13 @@
 }
 
 .banner-one {
-  position:absolute;
+  display:flex;
   background-size: cover;
   background-position: center;
   width:100vw;
   align-items: center;
   text-align: center;
+  justify-content:center;
   height: 25vh;
 
 
@@ -94,10 +95,12 @@
   background-size: contain;
   background-position: center center;
   width: 50vw;
-  height: 70vh;
+  height: 90vh;
   padding:100px;
   align-items:center;
   background-repeat: no-repeat;
+  text-align: center;
+  justify-content:center;
 
 }
 
