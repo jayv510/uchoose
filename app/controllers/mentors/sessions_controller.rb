@@ -38,7 +38,6 @@ class Mentors::SessionsController < Devise::SessionsController
     if params[:query].present?
             # @mentors = Mentor.where('university LIKE params[:query] OR major LIKE params[:query] OR major_category LIKE params[:query] OR first_name LIKE params[:query] OR last_name LIKE params[:query]', params[:query] == "%#{query}%")
 
-      @mentors = Mentor.search(params[:query])
 
         # -----elastic search----
         # ,{
@@ -49,7 +48,7 @@ class Mentors::SessionsController < Devise::SessionsController
         # misspellings: { edit_distance: 1, below: 5 },
       #   # aggs: [:university, :nationality, :major_category, :major, :first_name, :last_name, :degree_level]
       # })
-      @mentors = Mentor.search(params[:query])
+      @mentors = Mentor.search(params[:query]).order(:first_name)
         # ,{
         # index: "analyzed",
         # fields: [:university, :major_category, :major, :nationality, :first_name, :last_name, :degree_level],
@@ -63,7 +62,7 @@ class Mentors::SessionsController < Devise::SessionsController
       @result = "Showing mentors matching \"#{params[:query]}\""
 
     else
-      @mentors = Mentor.all
+      @mentors = Mentor.all.order(:first_name)
     end
   end
 
