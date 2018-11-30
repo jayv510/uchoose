@@ -85,6 +85,7 @@
   text-align: center;
   width: 100%;
 }
+
  @media (max-width: 1100px) {
   .profile-left img{
     width:200px;
@@ -96,7 +97,6 @@
     width: 100%;
   }
 }
-
 
 .profile-right {
   padding: 5px 30px;
@@ -226,10 +226,6 @@
 
 //------------INDEX FOOTER styling
 
-.container {
-  height: 100%;
-}
-
 .index-footer {
   background: #F57170;
   display: flex;
@@ -240,6 +236,5 @@
   color: white;
   clear: both;
   width: 100%;
-  margin-top: 120px;
 }
 

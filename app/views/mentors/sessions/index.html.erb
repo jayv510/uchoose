@@ -17,10 +17,11 @@
       %>
     <% end %>
     </div>
-
 </div>
 
-<h3><%= @result %></h3>
+  <div class="search-result">
+    <h3 id="search-result"><%= @result %></h3>
+  </div>
 
 <div class="container">
   <div class="col-xs-12">
@@ -36,7 +37,7 @@
               <div class="card-left">
                 <div class = "img">
                   <% if mentor.photo.present? == true %>
-                  <%= cl_image_tag mentor.photo, height: 120, width: 120, crop: :fill %>
+                  <%= cl_image_tag mentor.photo, height: 120, width: 120, :radius =>8, crop: :fill %>
                   <% else %>
                   <%= cl_image_tag("non_existing_id.jpg",
                   :width => 120, :height => 120,

@@ -25,7 +25,7 @@ export class Chat {
   joinChannel() {
     if (this.channel.state.status !== "joined") {
       this.channel.join().then(function(channel) {
-        console.log("Joined General Channel");
+        console.log("Joined channel");
        });
     }
   }
