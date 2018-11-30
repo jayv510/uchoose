@@ -6,20 +6,18 @@
     <li><a href="#three" class="links">Features</a></li>
     <li><a href="#four" class="links">Values</a></li>
   </ul>
-
 </div>
 
 <div class="home-banner" style= "background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path 'brooke-cagle-609873-unsplash.jpg' %>');" id= "one">
   <div class= "stuff">
     <h1>Make a better-informed choice about your future US university</h1>
     <p><span id="banner-typed-text"></span></p>
-
     <%= link_to "Find mentors", mentors_path, id:"button-home" %>
   </div>
-
 </div>
 
 <div class = "wrapper" id= "two">
+  <div class = "banner-one" style= "background-image: url('<%= cl_image_path 'flow_2.png' %>');" >
   <div class="container" id= "home-container">
     <div class = "wolf">
       <div class="row">
@@ -27,7 +25,7 @@
           <div class="card-home">
             <div class="card-description">
               <i class="fas fa-university fa-5x"></i>
-              <h2> Search a university or a major</h2>
+              <h2> Search by college or major</h2>
             </div>
           </div>
         </div>
@@ -43,12 +41,12 @@
           <div class="card-home" >
             <div class="card-description">
               <i class="fas fa-comments fa-5x"></i>
-              <h2>Chat with them!</h2>
+              <h2>Connect by text or video chat</h2>
             </div>
           </div>
         </div>
       </div>
-
+</div>
     </div>
   </div>
 </div>
@@ -119,7 +117,7 @@
         <div class="col-xs-12 col-sm-4">
           <div class="card-home-two" >
             <div class="card-description-two">
-              <i class="fas fa-comments fa-5x"></i>
+              <i class="fas fa-users fa-5x"></i>
               <h2>Talk to people who’ve been in your situation</h2>
             </div>
           </div>

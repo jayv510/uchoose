@@ -11,6 +11,9 @@
   align-items: center;
 }
 
+#banner-typed-text {
+  font-size:20px;
+}
 .stuff {
   justify-content: center;
   padding: 50px;
@@ -21,7 +24,7 @@
   font-size: 50px;
 }
 .stuff p {
-  padding-bottom: 30px;
+  padding-bottom: 50px;
 
 }
 
@@ -62,6 +65,18 @@
   color: #eee;
   justify-content: space-around;
   align-items: center;
+}
+
+.banner-one {
+  position:absolute;
+  background-size: cover;
+  background-position: center;
+  width:100vw;
+  align-items: center;
+  text-align: center;
+  height: 25vh;
+
+
 }
 
 .container {
