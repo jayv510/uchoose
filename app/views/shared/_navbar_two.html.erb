@@ -13,7 +13,14 @@
     <!-- Profile picture with dropdown list -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-       <%= image_tag "https://assets.vg247.com/current//2018/04/spiderman.jpg", class: "avatar dropdown-toggle", id: "navbar-wagas-menu", "data-toggle" => "dropdown" %>
+
+        <% if prospective_signed_in? %>
+       <%= image_tag "#{current_prospective.photo}", class: "avatar dropdown-toggle", id: "navbar-wagas-menu", "data-toggle" => "dropdown" %>
+        <% elsif mentor_signed_in? %>
+       <%= image_tag "#{current_mentor.photo}", class: "avatar dropdown-toggle", id: "navbar-wagas-menu", "data-toggle" => "dropdown" %>
+       <% else %>
+        <% end %>
+
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li><a href="#">Profile</a></li>
           <li><a href="#">Dashboard</a></li>
