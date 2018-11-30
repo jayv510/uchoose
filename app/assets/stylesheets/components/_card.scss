@@ -1,17 +1,16 @@
 .card-home {
   height: 250px;
   width: 300px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   border: 2px solid white;
   background-size: cover !important;
   background-position: center;
-  color: white;
+  color: #F57170;
   position: relative;
   border-radius: 30px;
   padding: 20px;
   display:flex;
   align-items: center;
-  background:transparent;
+  background-color: white;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
 
   @media (max-width: 1100px) {
@@ -44,7 +43,9 @@
   width: 100%;
   margin:0;
   height: 100vh;
-  display:flex;
+    display:flex;
+  justify-content:center;
+  align-items: center;
 
    @media (max-width: 1100px) {
     height: 140vh;
@@ -63,6 +64,7 @@
    float: right;
    padding-left: 0px;
    padding-top: 10px;
+   padding-right: 10px;
    margin-right: 20px;
    list-style-type: none;
 }
@@ -70,8 +72,8 @@
 .navbar-fixed-top ul li a{
   text-decoration: none;
   text-align: center;
-  display: block;
-  padding: 2px 0px 2px 10px;
+  display: flex;
+  padding: 5px 0px 2px 10px;
 }
 
 .navbar-fixed-top ul li a:hover{
@@ -85,6 +87,8 @@
   font-size: 15px;
   font-weight: normal;
   text-decoration: none;
+  text-align:left;
+  display:flex;
 }
 
 .wrapper {
@@ -93,6 +97,8 @@
   margin:0;
   height: 60vh;
   display:flex;
+  justify-content:center;
+  align-items: center;
 
 
 }
@@ -139,7 +145,11 @@
 
 
 .card-description {
+  display: flex;
   text-align: center;
+  justify-content:center;
+  align-items:center;
+  flex-direction: column;
 }
 
 .card-description h2 {
