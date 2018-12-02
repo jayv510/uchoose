@@ -116,3 +116,25 @@
         }
     });
   </script>
+
+
+<%= link_to "Leave a review for this mentor", review_mentors_path(@mentor) %>
+
+      <div class="list-group">
+        <% @mentor.review_mentors.each do |review| %>
+          <li class="list-group-item">
+            <small>
+              <% count = 0 %>
+              <% 5.times do %>
+                <% if review.rating > count %>
+                  <i class="fas fa-star"></i>
+                <% else %>
+                  <i class="far fa-star"></i>
+                <% end %>
+                <% count += 1 %>
+              <% end %>
+            </small>
+            <p><%= review.content %></p>
+          </li>
+        <% end %>
+      </div>

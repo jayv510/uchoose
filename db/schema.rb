@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_28_023803) do
+ActiveRecord::Schema.define(version: 2018_12_02_083454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(version: 2018_11_28_023803) do
     t.index ["reset_password_token"], name: "index_prospectives_on_reset_password_token", unique: true
   end
 
+  create_table "review_mentors", force: :cascade do |t|
+    t.text "content"
+    t.integer "rating"
+    t.bigint "mentor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mentor_id"], name: "index_review_mentors_on_mentor_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.text "comment"
@@ -77,5 +86,6 @@ ActiveRecord::Schema.define(version: 2018_11_28_023803) do
 
   add_foreign_key "bookings", "mentors", column: "mentors_id"
   add_foreign_key "bookings", "prospectives", column: "prospectives_id"
+  add_foreign_key "review_mentors", "mentors"
   add_foreign_key "reviews", "bookings", column: "bookings_id"
 end
