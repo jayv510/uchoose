@@ -10,9 +10,18 @@
   transition: all .3s ease-in-out;
 
   @media (max-width: 1150px) {
-      height: 30vh;
-      width: 90vw;
+      width: 80vw;
    }
+}
+
+@media (max-width: 850px) {
+  .card {
+  height: 12vh;
+  width: 90vw;
+  display:flex;
+  align-items: center;
+
+  }
 }
 
 .card:hover {
@@ -26,6 +35,7 @@ h3.title {
   font-weight: 600;
   margin: 5px;
   padding-bottom: 2px;
+  color: #6F8AB7;
 }
 
 h3.uni-maj {
@@ -33,12 +43,25 @@ h3.uni-maj {
   font-weight: 400;
   margin: 5px;
   padding-bottom: 2px;
+  color: #6F8AB7;
 
+}
+
+
+.card-center p{
+  color: #96A9CA;
 }
 
 #description {
   margin: 5px;
   font-size: 12px;
+
+}
+
+@media (max-width: 850px) {
+  .card-center p {
+   display: none;
+  }
 }
 
 
@@ -53,6 +76,13 @@ h3.uni-maj {
   padding: 15px 10px;
 }
 
+@media (max-width: 850px) {
+  .card-left img {
+  height:60px;
+  width: 60px;
+
+  }
+}
 
 .img {
   border-radius: 8px;
@@ -67,10 +97,33 @@ h3.uni-maj {
    }
 }
 
+@media (max-width: 850px) {
+  .card-center h3 {
+  font-size:10px;
+
+  }
+}
+
+@media (max-width: 850px) {
+  .card-center {
+  width: 200px;
+
+  }
+}
+
+
 .card-right {
   width: 300px;
   padding: 10vh 2vw;
 }
+
+@media (max-width: 850px) {
+  .card-right  {
+   display: none;
+  }
+}
+
+
 
 .btn-treehouse {
   color: white;
