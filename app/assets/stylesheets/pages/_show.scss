@@ -5,25 +5,61 @@
   padding: 15px 65px;
 }
 
-#uni {
-  font-weight: 800;
-  text-align: left;
-  color: #5B98C9;
+
+
+.profile-right h3 {
+  font-size:28px;
 }
 
-#major {
+.profile-right h4 {
+  font-size:22px;
+}
+
+span {
+  display: inline-flex;
+}
+
+#name-title {
+  font-size: 30px;
+  padding-top: 12px;
+  margin-bottom: -15px;
+}
+
+#name-title p {
   font-size: 18px;
+  padding: 8px;
+}
+
+
+ion-icon {
+  font-size: 20px;
+}
+
+
+
+#major {
+  font-size: 16px;
   margin: 5px;
+  line-height: 1.5;
 }
 
 #major-cat, #level {
-  font-size: 18px;
+  font-size: 16px;
   margin: 5px;
+  line-height: 1.5;
+
+}
+
+#level {
+  padding-bottom:2.5vh;
 }
 
 #nat {
-  font-size: 18px;
+  font-size: 16px;
   margin: 5px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+
 }
 
 #about-me-title {
@@ -76,10 +112,14 @@
 }
 
 .profile-left {
-  padding: 25px;
-  margin: 17px;
+  padding-left: 25px;
+  padding-top: 25px;
   text-align: center;
   width: 100%;
+}
+
+.profile-left img {
+  border-radius:5px;
 }
 
  @media (max-width: 1100px) {
@@ -95,7 +135,6 @@
 }
 
 .profile-right {
-  padding: 5px 30px;
   margin: 5px 30px;
 }
 
@@ -113,7 +152,7 @@
   box-shadow: 2px 2px 1px #F57170;
   background-color: white;
   min-height: 100%;
-  padding: 50px;
+  padding: 30px 60px 50px 60px;
   position: relative;
 }
 
@@ -123,6 +162,28 @@
   border-radius: 5px;
   padding-bottom: 20px;
 }
+
+/* Tab */
+
+.nav-tabs a {
+  color: #F57170;
+  border: 1px solid #F57170;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  background-color: #F57170;
+  border-radius: 8px 8px 0px 0px;
+  color: white;
+}
+
+.nav-tabs {
+  border-bottom: 3px solid #F57170;
+}
+
+.nav-tabs > li > a {
+  border-radius: 8px 8px 0px 0px;
+}
+
 
 
 /* FOR CHAT MODAL */

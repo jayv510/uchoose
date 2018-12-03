@@ -1,37 +1,11 @@
 <%= render 'shared/navbar_two' %>
 
+<div class="banner-three" style= "background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('<%= cl_image_path 'figure_1.png' %>');" id= "one">
+
 <div class="containter">
 
   <div class="profile-card">
 
-    <div class="upper-container">
-      <div class="row">
-        <div class="col-xs-12">
-
-            <h1 id="profile-name"><%= @mentor.first_name.upcase %> <%= @mentor.last_name.upcase %></h1>
-            <h3>
-
-              <% count = 0 %>
-              <% 5.times do %>
-                <% if @mentor.average_review > count %>
-                  <% if (@mentor.average_review - count) <= 0.9 %>
-                    <ion-icon size="large" name="star-half"></ion-icon>
-                  <% else %>
-                    <ion-icon size="large" name="star"></ion-icon>
-                  <% end %>
-                <% else %>
-                  <ion-icon size="large" name="star-outline"></ion-icon>
-                <% end %>
-                <% count += 1 %>
-              <% end %>
-
-              <%= @mentor.average_review %>
-              (<%= @mentor.review_mentors.count %> reviews)
-            </h3>
-
-        </div>
-      </div>
-    </div>
 
      <div class="mid-container">
         <div class="row">
@@ -55,13 +29,30 @@
 
           <div class="col-xs-12 col-sm-8 col-md-8">
             <div class="profile-right">
-              <h2><%= @mentor.first_name.upcase %>  <%=  @mentor.last_name.upcase %></h2>
-              <h2 id="uni"><strong> <%= @mentor.university %> </strong></h2>
+              <span id = "name-title">  <%= @mentor.first_name.upcase %>  <%= @mentor.last_name.upcase %> <p>(<%= @mentor.nationality %>)</p></span>
 
-              <h2 id="major"> Major: <%= @mentor.major %> </h2>
-              <h3 id="major-cat"> Category: <%= @mentor.major_category %> </h3>
-              <h3 id="level"> Level: <%= @mentor.degree_level %> </h3>
-              <h3 id="nat"> Nationality: <%= @mentor.nationality %> </h3>
+              <h4 id="uni"><strong> <%= @mentor.university %> </strong></h4>
+              <h6 style="color: #F57170;">
+              <% count = 0 %>
+              <% 5.times do %>
+                <% if @mentor.average_review > count %>
+                  <% if (@mentor.average_review - count) <= 0.9 %>
+                    <ion-icon size="large" name="star-half "></ion-icon>
+                  <% else %>
+                    <ion-icon size="large" name="star"></ion-icon>
+                  <% end %>
+                <% else %>
+                  <ion-icon size="large" name="star-outline"></ion-icon>
+                <% end %>
+                <% count += 1 %>
+              <% end %>
+              <%= @mentor.average_review %>
+              (<%= @mentor.review_mentors.count %> reviews)
+            </h6>
+
+              <h3 id="major"> <strong>Major: </strong><%= @mentor.major %></h3>
+              <h3 id="major-cat"> <strong> Category:</strong> <%= @mentor.major_category %> </h3>
+              <h3 id="level"><strong> Level: </strong> <%= @mentor.degree_level %> </h3>
 
               <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#home">Mentor profile</a></li>
@@ -81,8 +72,25 @@
                   </div>
                 </div>
                 <div id="menu1" class="tab-pane fade">
-                  <h3>Menu 1</h3>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  <div class="list-group">
+                    <% @mentor.review_mentors.each do |review| %>
+                    <li class="list-group-item">
+                      <small>
+                        <% count = 0 %>
+                        <% 5.times do %>
+                        <% if review.rating > count %>
+                        <i class="fas fa-star"></i>
+                        <% else %>
+                        <i class="far fa-star"></i>
+                        <% end %>
+                        <% count += 1 %>
+                        <% end %>
+                      </small>
+                      <p><%= review.content %></p>
+                      <p><i> by <%= review.student %></i></p>
+                    </li>
+                    <% end %>
+                  </div>
                 </div>
                 <div id="menu2" class="tab-pane fade">
                   <h3>Menu 2</h3>
@@ -148,7 +156,9 @@
       </div>
     </div>
   </div>
+  </div>
 
+</div>
   <script type="text/javascript">
     document.getElementById('startChat').addEventListener("click", () => {
       // document.getElementById('modalWindow').removeClass('hide');
@@ -165,22 +175,4 @@
 
 <%=  %>
 
-      <div class="list-group">
-        <% @mentor.review_mentors.each do |review| %>
-          <li class="list-group-item">
-            <small>
-              <% count = 0 %>
-              <% 5.times do %>
-                <% if review.rating > count %>
-                  <i class="fas fa-star"></i>
-                <% else %>
-                  <i class="far fa-star"></i>
-                <% end %>
-                <% count += 1 %>
-              <% end %>
-            </small>
-            <p><%= review.content %></p>
-            <p><i> by <%= review.student %></i></p>
-          </li>
-        <% end %>
-      </div>
+
