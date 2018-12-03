@@ -22,9 +22,12 @@
   <div class="search-result">
     <h3 id="search-result"><%= @result %></h3>
   </div>
-  <h3><a href="<%= mentors_path + '?sort=reviews'%>">Sort by reviews</a></h3>
+
 <div class="container">
   <div class="col-xs-12">
+
+  <p><a href="<%= mentors_path + '?sort=reviews'%>">Sort by reviews</a></p>
+
       <% @mentors.each do |mentor| %>
       <a href= <%= mentor_path(mentor)%> >
 
