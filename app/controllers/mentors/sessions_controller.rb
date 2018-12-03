@@ -64,11 +64,23 @@ class Mentors::SessionsController < Devise::SessionsController
       @result = "Showing mentors matching \"#{params[:query]}\""
 
     else
-      # if params[:sort].present?
-      #   @mentors = Mentor.all.sort_by{|x|x.average_review}
-      # else
+      if params[:sort].present?
+          # mentor_nan = []
+          # mentor_nan << Mentor.all.select{ |x| x.average_review.nan? }
+          # mentor_nan.map |a|
+          # a.average_review = 0
+          # @mentors = Mentor.all
+          # @mentors.each do |mentor|
+          #   mentor.average_review.nan?
+          #     if true
+          #     mentor.average_review = 0
+          #   end
+          # end
+          @mentors_no_nan = Mentor.all.reject{ |x| x.average_review.nan?}
+          @mentors = @mentors_no_nan.sort_by{|x|x.average_review}.reverse
+      else
         @mentors = Mentor.all.order(:first_name)
-      # end
+      end
     end
   end
 
@@ -91,6 +103,6 @@ class Mentors::SessionsController < Devise::SessionsController
   private
 
   def mentor_params
-    params.require(:mentor).permit(:email, :password, :first_name, :last_name, :nationality, :university, :major, :major_category, :degree_level, :description, :description_two, :rate, :photo, :average_review)
+    params.require(:mentor).permit(:email, :password, :first_name, :last_name, :nationality, :university, :major, :major_category, :degree_level, :description, :description_two, :rate, :photo)
   end
 end
