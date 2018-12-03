@@ -26,7 +26,11 @@
 <div class="container">
   <div class="col-xs-12">
 
-  <p><a href="<%= mentors_path + '?sort=reviews'%>">Sort by reviews</a></p>
+  <% if params[:query].present? %>
+  <%=  %>
+  <% else %>
+  <p> | <a href="<%= mentors_path + '?sortname=first_name'%>">Sort by name</a> | <a href="<%= mentors_path + '?sortreview=reviews'%>">Sort by reviews</a> | <a href="<%= mentors_path + '?sortmajor=majors'%>">Sort by major</a> | <a href="<%= mentors_path + '?sortuniversity=universities'%>">Sort by university</a> | </p>
+  <% end %>
 
       <% @mentors.each do |mentor| %>
       <a href= <%= mentor_path(mentor)%> >
