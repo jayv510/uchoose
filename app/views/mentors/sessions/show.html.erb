@@ -14,9 +14,13 @@
               <% count = 0 %>
               <% 5.times do %>
                 <% if @mentor.average_review > count %>
-                  <i class="fas fa-star"></i>
+                  <% if (@mentor.average_review - count) <= 0.9 %>
+                    <ion-icon size="large" name="star-half"></ion-icon>
+                  <% else %>
+                    <ion-icon size="large" name="star"></ion-icon>
+                  <% end %>
                 <% else %>
-                  <i class="far fa-star"></i>
+                  <ion-icon size="large" name="star-outline"></ion-icon>
                 <% end %>
                 <% count += 1 %>
               <% end %>
