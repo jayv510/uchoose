@@ -28,7 +28,9 @@ class Mentors::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
   def index
+
     # def search_data
     #       {
     #   all: [:university, :major, :major_category, :nationality, :first_name, :last_name].join(" ")
@@ -62,12 +64,18 @@ class Mentors::SessionsController < Devise::SessionsController
       @result = "Showing mentors matching \"#{params[:query]}\""
 
     else
-      @mentors = Mentor.all.order(:first_name)
+      # if params[:sort].present?
+      #   @mentors = Mentor.all.sort_by{|x|x.average_review}
+      # else
+        @mentors = Mentor.all.order(:first_name)
+      # end
     end
   end
 
   def show
     @mentor = Mentor.find(params[:id])
+    @prospective = current_prospective
+    # @review_mentors = @mentor.review_mentors
   end
 
   def edit
@@ -83,6 +91,6 @@ class Mentors::SessionsController < Devise::SessionsController
   private
 
   def mentor_params
-    params.require(:mentor).permit(:email, :password, :first_name, :last_name, :nationality, :university, :major, :major_category, :degree_level, :description, :description_two, :rate, :photo)
+    params.require(:mentor).permit(:email, :password, :first_name, :last_name, :nationality, :university, :major, :major_category, :degree_level, :description, :description_two, :rate, :photo, :average_review)
   end
 end
