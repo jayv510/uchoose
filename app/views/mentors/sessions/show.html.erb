@@ -4,6 +4,35 @@
 
   <div class="profile-card">
 
+    <div class="upper-container">
+      <div class="row">
+        <div class="col-xs-12">
+
+            <h1 id="profile-name"><%= @mentor.first_name.upcase %> <%= @mentor.last_name.upcase %></h1>
+            <h3>
+
+              <% count = 0 %>
+              <% 5.times do %>
+                <% if @mentor.average_review > count %>
+                  <% if (@mentor.average_review - count) <= 0.9 %>
+                    <ion-icon size="large" name="star-half"></ion-icon>
+                  <% else %>
+                    <ion-icon size="large" name="star"></ion-icon>
+                  <% end %>
+                <% else %>
+                  <ion-icon size="large" name="star-outline"></ion-icon>
+                <% end %>
+                <% count += 1 %>
+              <% end %>
+
+              <%= @mentor.average_review %>
+              (<%= @mentor.review_mentors.count %> reviews)
+            </h3>
+
+        </div>
+      </div>
+    </div>
+
      <div class="mid-container">
         <div class="row">
 
@@ -128,3 +157,30 @@
         }
     });
   </script>
+
+
+<%= link_to "Leave a review for this mentor", review_mentors_path(@mentor) %>
+
+
+
+<%=  %>
+
+      <div class="list-group">
+        <% @mentor.review_mentors.each do |review| %>
+          <li class="list-group-item">
+            <small>
+              <% count = 0 %>
+              <% 5.times do %>
+                <% if review.rating > count %>
+                  <i class="fas fa-star"></i>
+                <% else %>
+                  <i class="far fa-star"></i>
+                <% end %>
+                <% count += 1 %>
+              <% end %>
+            </small>
+            <p><%= review.content %></p>
+            <p><i> by <%= review.student %></i></p>
+          </li>
+        <% end %>
+      </div>

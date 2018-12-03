@@ -1,0 +1,6 @@
+      <%= simple_form_for [@mentor, @review_mentor] do |f| %>
+        <%= f.input :rating, collection: 0..5 %>
+        <%= f.hidden_field :prospective_id, :value => @prospective.id %>
+        <%= f.input :content%>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>

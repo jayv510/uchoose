@@ -22,7 +22,7 @@
   <div class="search-result">
     <h3 id="search-result"><%= @result %></h3>
   </div>
-
+  <h3><a href="<%= mentors_path + '?sort=reviews'%>">Sort by reviews</a></h3>
 <div class="container">
   <div class="col-xs-12">
       <% @mentors.each do |mentor| %>
@@ -61,6 +61,26 @@
             <div class="col-xs-3">
               <div class="card-right">
                 <%= link_to "View profile", mentor_path(mentor), class: "btn-treehouse" %>
+
+              <br>
+              <% count = 0 %>
+              <% 5.times do %>
+                <% if mentor.average_review > count %>
+                  <% if (mentor.average_review - count) <= 0.9 %>
+                    <ion-icon size="large" name="star-half"></ion-icon>
+                  <% else %>
+                    <ion-icon size="large" name="star"></ion-icon>
+                  <% end %>
+                <% else %>
+                  <ion-icon size="large" name="star-outline"></ion-icon>
+                <% end %>
+                <% count += 1 %>
+              <% end %>
+
+              <%= mentor.average_review %>
+              (<%= mentor.review_mentors.count %> reviews)
+
+
               </div>
             </div>
             </a>
@@ -88,4 +108,3 @@
     </div>
 
 </div>
-
