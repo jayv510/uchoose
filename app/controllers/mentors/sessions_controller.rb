@@ -64,7 +64,11 @@ class Mentors::SessionsController < Devise::SessionsController
       @result = "Showing mentors matching \"#{params[:query]}\""
 
     else
-      @mentors = Mentor.all.order(:first_name)
+      # if params[:sort].present?
+      #   @mentors = Mentor.all.sort_by{|x|x.average_review}
+      # else
+        @mentors = Mentor.all.order(:first_name)
+      # end
     end
   end
 

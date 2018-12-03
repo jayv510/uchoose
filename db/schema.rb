@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_025157) do
     t.text "description_two"
     t.string "major_category"
     t.string "photo"
-    t.integer "average_review"
+    t.float "average_mentor_review"
     t.index ["email"], name: "index_mentors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_mentors_on_reset_password_token", unique: true
   end
