@@ -90,6 +90,17 @@
 
 }
 
+.banner-three {
+  display:block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width:100vw;
+  padding-top: 10px;
+  align-items: center;
+  justify-content:center;
+}
+
 .container {
   display: flex;
 }
