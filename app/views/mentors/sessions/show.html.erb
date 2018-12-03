@@ -9,6 +9,21 @@
         <div class="col-xs-12">
 
             <h1 id="profile-name"><%= @mentor.first_name.upcase %> <%= @mentor.last_name.upcase %></h1>
+            <h3>
+
+              <% count = 0 %>
+              <% 5.times do %>
+                <% if @mentor.average_review > count %>
+                  <i class="fas fa-star"></i>
+                <% else %>
+                  <i class="far fa-star"></i>
+                <% end %>
+                <% count += 1 %>
+              <% end %>
+
+              <%= @mentor.average_review %>
+              (<%= @mentor.review_mentors.count %> reviews)
+            </h3>
 
         </div>
       </div>
@@ -120,6 +135,10 @@
 
 <%= link_to "Leave a review for this mentor", review_mentors_path(@mentor) %>
 
+
+
+<%=  %>
+
       <div class="list-group">
         <% @mentor.review_mentors.each do |review| %>
           <li class="list-group-item">
@@ -135,6 +154,7 @@
               <% end %>
             </small>
             <p><%= review.content %></p>
+            <p><i> by <%= review.student %></i></p>
           </li>
         <% end %>
       </div>

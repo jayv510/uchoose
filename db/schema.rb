@@ -10,22 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_02_083454) do
+ActiveRecord::Schema.define(version: 2018_12_03_025157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "bookings", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "prospectives_id"
-    t.bigint "mentors_id"
-    t.datetime "start_datetime"
-    t.datetime "end_datetime"
-    t.decimal "total_cost"
-    t.index ["mentors_id"], name: "index_bookings_on_mentors_id"
-    t.index ["prospectives_id"], name: "index_bookings_on_prospectives_id"
-  end
 
   create_table "mentors", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -46,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_12_02_083454) do
     t.text "description_two"
     t.string "major_category"
     t.string "photo"
+    t.integer "average_review"
     t.index ["email"], name: "index_mentors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_mentors_on_reset_password_token", unique: true
   end
@@ -72,20 +61,11 @@ ActiveRecord::Schema.define(version: 2018_12_02_083454) do
     t.bigint "mentor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "prospective_id"
     t.index ["mentor_id"], name: "index_review_mentors_on_mentor_id"
+    t.index ["prospective_id"], name: "index_review_mentors_on_prospective_id"
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer "rating"
-    t.text "comment"
-    t.bigint "bookings_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bookings_id"], name: "index_reviews_on_bookings_id"
-  end
-
-  add_foreign_key "bookings", "mentors", column: "mentors_id"
-  add_foreign_key "bookings", "prospectives", column: "prospectives_id"
   add_foreign_key "review_mentors", "mentors"
-  add_foreign_key "reviews", "bookings", column: "bookings_id"
+  add_foreign_key "review_mentors", "prospectives"
 end

@@ -22,4 +22,11 @@ class Mentor < ApplicationRecord
           tsearch: { prefix: true } # <-- now `superman batm` will return something!
         }
 
+
+        def average_review
+          all = self.review_mentors.map {|review| review.rating.to_i} #array
+          sum = all.reduce(0, :+)
+          decimal_sum = sum / all.count.to_f
+          decimal_sum.round(1)
+        end
 end

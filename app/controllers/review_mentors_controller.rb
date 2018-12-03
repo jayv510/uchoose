@@ -11,12 +11,12 @@ class ReviewMentorsController < ApplicationController
     if @review_mentor.save
       redirect_to mentor_path(@mentor)
     else
-      render "mentors/show"
+      render "mentors/sessions/show"
     end
   end
 
   private
     def review_mentor_params
-    params.require(:review_mentor).permit(:rating, :content)
+    params.require(:review_mentor).permit(:rating, :content, :prospective_id)
   end
 end

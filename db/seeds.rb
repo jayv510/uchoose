@@ -34,7 +34,7 @@ avatars = [
 puts "Generating fake mentors ..."
 
 100.times do
-  Mentor.create(
+  m = Mentor.create(
     email: Faker::Internet.email,
     password: "123456",
     first_name: Faker::Name.first_name,
@@ -48,6 +48,24 @@ puts "Generating fake mentors ..."
     description_two: Faker::Lorem.paragraph(5, true, 3),
     remote_photo_url: avatars.sample)
 end
+
+20.times do
+  Prospective.create(
+    email: Faker::Internet.email,
+    password: "123456",
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    nationality: Faker::Address.country,
+    remote_photo_url: avatars.sample)
+end
+
+500.times do
+  ReviewMentor.create(
+    content: ["Very good talk, thank you", "Excellent", "Very helpful", "Great help"].sample,
+    rating: (3..5).to_a.sample,
+    mentor_id: (1..100).to_a.sample,
+    prospective_id: (1..20).to_a.sample)
+  end
 
 Mentor.create(
   email: "mentor@test.com",
