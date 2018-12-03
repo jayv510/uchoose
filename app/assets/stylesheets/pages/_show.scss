@@ -64,10 +64,6 @@
 
 //---------CONTAINER for profile and positioning of right and left elements
 
-.upper-container {
-  display: flex;
-}
-
 .mid-container {
   display: flex;
 
@@ -117,6 +113,7 @@
   box-shadow: 2px 2px 1px #F57170;
   background-color: white;
   min-height: 100%;
+  padding: 50px;
   position: relative;
 }
 
