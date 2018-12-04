@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'csv'
+
 
 puts "Deleting any existing users ..."
 Prospective.delete_all
@@ -33,14 +35,21 @@ avatars = [
 
 puts "Generating fake mentors ..."
 
+csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
+filepath    = 'app/assets/data/UniversityData.csv'
+university_name = []
+CSV.foreach(filepath, csv_options) do |row|
+   university_name << row['Name']
+end
+
 100.times do
-  m = Mentor.create(
+    Mentor.create(
     email: Faker::Internet.email,
     password: "123456",
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     nationality: Faker::Address.country,
-    university: Faker::University.name,
+    university: university_name.sample,
     major_category: major_categories.sample,
     major: majors.sample.titleize,
     degree_level: degree_levels.sample,
@@ -49,6 +58,8 @@ puts "Generating fake mentors ..."
     remote_photo_url: avatars.sample,
     rate: [3..12].sample)
 end
+
+
 
 20.times do
   Prospective.create(
