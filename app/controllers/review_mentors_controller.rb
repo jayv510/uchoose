@@ -1,8 +1,8 @@
 class ReviewMentorsController < ApplicationController
   def new
-    # @mentor = Mentor.find(params[:mentor_id])
     @review_mentor = ReviewMentor.new
     @prospective = current_prospective
+    @mentor = Mentor.find(params[:mentor_id])
   end
 
   def create
