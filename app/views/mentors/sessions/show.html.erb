@@ -1,6 +1,6 @@
 <%= render 'shared/navbar_two' %>
 
-<div class="banner-three" style= "background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('<%= cl_image_path 'figure_1.png' %>');" id= "one">
+<div class="banner-three" style= "background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.)), url('<%= cl_image_path 'figure_1.png' %>');" id= "one">
 
 <div class="containter">
 
@@ -32,23 +32,24 @@
               <span id = "name-title">  <%= @mentor.first_name.upcase %>  <%= @mentor.last_name.upcase %> <p>(<%= @mentor.nationality %>)</p></span>
 
               <h4 id="uni"><strong> <%= @mentor.university %> </strong></h4>
-              <h6 style="color: #F57170;">
+
               <% count = 0 %>
               <% 5.times do %>
                 <% if @mentor.average_review > count %>
                   <% if (@mentor.average_review - count) <= 0.9 %>
-                    <ion-icon size="large" name="star-half "></ion-icon>
+                    <ion-icon  name="star-half" style = "color: #F57170" ></ion-icon>
                   <% else %>
-                    <ion-icon size="large" name="star"></ion-icon>
+                    <ion-icon  name="star" style = "color: #F57170"></ion-icon>
                   <% end %>
                 <% else %>
-                  <ion-icon size="large" name="star-outline"></ion-icon>
+                  <ion-icon  name="star-outline" style = "color: #F57170"></ion-icon>
                 <% end %>
                 <% count += 1 %>
               <% end %>
+
               <%= @mentor.average_review %>
               (<%= @mentor.review_mentors.count %> reviews)
-            </h6>
+
 
               <h3 id="major"> <strong>Major: </strong><%= @mentor.major %></h3>
               <h3 id="major-cat"> <strong> Category:</strong> <%= @mentor.major_category %> </h3>

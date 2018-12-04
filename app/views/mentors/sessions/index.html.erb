@@ -70,22 +70,26 @@
                 <%= link_to "View profile", mentor_path(mentor), class: "btn-treehouse" %>
 
               <br>
+              <div id = "ok">
               <% count = 0 %>
               <% 5.times do %>
                 <% if mentor.average_review > count %>
                   <% if (mentor.average_review - count) <= 0.9 %>
-                    <ion-icon size="large" name="star-half"></ion-icon>
+                    <ion-icon name="star-half" style = "color: #F57170"></ion-icon>
                   <% else %>
-                    <ion-icon size="large" name="star"></ion-icon>
+                    <ion-icon  name="star" style = "color: #F57170"></ion-icon>
                   <% end %>
                 <% else %>
-                  <ion-icon size="large" name="star-outline"></ion-icon>
+                   <ion-icon  name="star-outline" style = "color: #F57170 "></ion-icon>
                 <% end %>
                 <% count += 1 %>
               <% end %>
 
+              <p>
               <%= mentor.average_review %>
               (<%= mentor.review_mentors.count %> reviews)
+              </p>
+              </div>
 
 
               </div>
