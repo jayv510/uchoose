@@ -186,6 +186,10 @@ span {
 
 /* FOR CHAT MODAL */
 
+.modal-dialog {
+  width: 80vw;
+}
+
 .chat-window {
   height: 500px;
   width: 100%;
@@ -198,6 +202,10 @@ span {
 .modal-header {
   border-bottom: 1px solid #F57170;
   background-color: #F57170;
+}
+
+.modal-body {
+  height: 75vh;
 }
 
 .modal-footer {
@@ -298,6 +306,77 @@ span {
   color: white;
   clear: both;
   width: 100%;
+}
+
+
+//-------VIDEO CHAT-----------
+
+
+
+#local-media {
+  width: 280px;
+  height: 195px;
+  position:relative;
+  border: 1px solid #cececc;
+  background-color: black;
+
+}
+
+#local-media video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#remote-media {
+  width: 50vw;
+  height: 65vh;
+  border: 1px solid #cececc;
+  position:relative;
+  background-color: black;
+}
+
+#remote-media video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#log {
+  height: 16vh;
+  overflow-y: scroll;
+  border: 1px solid #cececc;
+  margin-top:10px;
+  width:280px;
+}
+
+#room-controls {
+  margin-top: 15px;
+}
+
+#button-leave {
+  display: none;
+}
+
+
+
+#button-preview{
+  margin-top: 15px;
+}
+
+#button-join {
+  margin-bottom: 10px;
+}
+
+
+.modal-header {
+  border-radius: 7.8px 7.8px 0px 0px;
 }
 
  #ok ion-icon {

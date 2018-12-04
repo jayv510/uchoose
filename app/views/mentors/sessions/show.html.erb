@@ -21,7 +21,9 @@
                 :crop => :fill) %>
               <% end %>
 
-              <button type="button" class="button-chat btn-treehouse" id="startChat" data-toggle="modal" data-target="#myModal"> Chat with <%= @mentor.first_name %> </button>
+              <button type="button" class="button-chat btn-treehouse" id="startChat" data-toggle="modal" data-target="#chatModal" data-backdrop="static" data-keyboard="false"><i class="fas fa-comments"></i> &nbsp; Chat with <%= @mentor.first_name %> </button>
+
+              <button type="button" class="button-chat btn-treehouse" id="startVideo" data-toggle="modal" data-target="#videoModal" data-backdrop="static" data-keyboard="false"><i class="fas fa-video"></i> &nbsp; Video chat with <%= @mentor.first_name %> </button>
 
               <h3 id="go-back"> <%= link_to "Back to mentors", mentors_path %> </h3>
             </div>
@@ -119,7 +121,8 @@
 
   </div>
 
-
+<%= link_to "Leave a review for this mentor", review_mentors_path(@mentor) %>
+  
   <div class="footer">
     <div class="footer-links">
       <a href="http://www.github.com"><i class="fab fa-github"></i></a>
@@ -136,7 +139,7 @@
 </div>
 
 <!-- Chat modal -->
-  <div id="myModal" class="modal fade" role="dialog">
+  <div id="chatModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
       <div class="modal-content chat chat-window" id="<%= @mentor.id %>A<%= current_prospective.id %>">
@@ -160,21 +163,68 @@
   </div>
   </div>
 
+
+<!-- Video chat modal -->
+<div id="videoModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content video" style =
+    "border-radius: 8px 8px 8px 8px;" id="<%= @mentor.id %>A<%= current_prospective.id %>">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Video chat with <%= @mentor.first_name %></h4>
+      </div>
+
+            <div class="modal-body">
+              <div class = "video-container">
+                <div class = "row">
+                  <div class = "col-xs-4 col-sm-4 col-md-4">
+                   <div id="controls">
+                     <div id="preview">
+                       <div id="local-media">
+                        <img src="" alt="">
+                       </div>
+                       <button id="button-preview">Preview My Camera</button>
+                       <div id="room-controls">
+                 <!-- <p class="instructions">Room Name:</p>
+                   <input id="room-name" type="text" placeholder="Enter a room name" /> -->
+                   <button id="button-join">Join Room</button>
+                   <button id="button-leave">Leave Room</button>
+                 </div>
+                 <div id="log"></div>
+
+                 </div>
+               </div>
+             </div>
+
+             <div class = "col-xs-8 col-sm-8 col-md-8">
+
+              <div id="remote-media"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
 </div>
-  <script type="text/javascript">
-    document.getElementById('startChat').addEventListener("click", () => {
-      // document.getElementById('modalWindow').removeClass('hide');
-      if (document.querySelector(".chat")) {
-          window.chat = new Chat();
-        }
-    });
-  </script>
-
-
-<%= link_to "Leave a review for this mentor", review_mentors_path(@mentor) %>
 
 
 
-<%=  %>
+<!-- Chat JS -->
+<script type="text/javascript">
+  document.getElementById('startChat').addEventListener("click", () => {
+    if (document.querySelector(".chat")) {
+        window.chat = new Chat();
+      }
+  });
+</script>
 
-
+<!-- Video JS -->
+<script src="//media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
+<script src="//media.twiliocdn.com/sdk/js/video/releases/1.14.0/twilio-video.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

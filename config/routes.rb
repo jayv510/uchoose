@@ -11,19 +11,11 @@ Rails.application.routes.draw do
   patch 'mentors/:id', to: 'mentors/sessions#update'
   end
 
-  # resources :chats, only: [:show]
-  get 'chats', to: 'chats#show'
-
   resources :tokens, only: [:create]
+  
+  resources :videotokens, only: [:create]
 
   get '/mentors/:mentor_id/review_mentors/new', to: 'review_mentors#new', as: :review_mentors
   post '/mentors/:mentor_id/review_mentors/new', to: 'review_mentors#create'
-
-
-#                Prefix  Verb  URI Pattern                              Controller#Action
-# new_restaurant_review  GET   /restaurants/:restaurant_id/reviews/new  reviews#new
-#    restaurant_reviews  POST  /restaurants/:restaurant_id/reviews      reviews#create
-
-# get 'restaurants/:id', to: 'restaurants#show', as: :restaurant
 
 end

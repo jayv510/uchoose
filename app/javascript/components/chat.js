@@ -1,9 +1,11 @@
+import Rails from 'rails-ujs';
+
 export class Chat {
   constructor() {
     this.channel = null;
     this.client = null;
     this.identity = null;
-    this.messages = ["Waiting on carrier pigeon ..."];
+    this.messages = ["Setting up chat ..."];
     this.initialize();
   }
 
