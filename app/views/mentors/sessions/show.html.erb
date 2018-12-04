@@ -97,8 +97,108 @@
                   </div>
                 </div>
                 <div id="menu2" class="tab-pane fade">
-                  <h3>Menu 2</h3>
-                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+
+                  <%# Parsing rows from UniversityData.csv file%>
+                  <% CSV.foreach(@filepath, @csv_options) do |row| %>
+                  <% if @mentor.university == row['Name'] %>
+                  <h3><%= @mentor.university %>, <%= row['State'] %></h3>
+                  <p>
+                  Average annual total cost:
+                  $<%= row['AverageTotalCost'] %>
+                  </p>
+
+                  <p>
+                  Out-of-state tuition and fees:
+                  $<%= row['OutOfStateTuition'] %>
+                  </p>
+
+                  <p>
+                  Acceptance rate:
+                  <%= row['AcceptanceRate'] %>%
+                  </p>
+
+                  <p>
+                  Total number of applicants:
+                  <%= row['TotalApplicants'] %> Applicants
+                  </p>
+
+                  <p>
+                  Number of full-time students:
+                  <%= row['FullTimeTotal'] %> Students
+                  </p>
+
+                  <p>
+                  Number of full-time male students:
+                  <%= row['FullTimeMen'] %> Students
+                  </p>
+
+                  <p>
+                  Number of full-time female students:
+                  <%= row['FullTimWomen'] %> Students
+                  </p>
+
+                  <p>
+                  SAT Critical Reading 25th percentile:
+                  <%= row['SATCR25%'] %>
+                  </p>
+
+                  <p>
+                  SAT Critical Reading 75th percentile:
+                  <%= row['SATCR75%'] %>
+                  </p>
+
+                  <p>
+                  SAT Critical Writing 25th percentile:
+                  <%= row['SATWR25%'] %>
+                  </p>
+
+                  <p>
+                  SAT Critical Writing 75th percentile:
+                  <%= row['SATWR75%'] %>
+                  </p>
+
+                  <p>
+                  SAT Critical Math 25th percentile:
+                  <%= row['SATM25%'] %>
+                  </p>
+
+                  <p>
+                  SAT Critical Math 25th percentile:
+                  <%= row['SATM25%'] %>
+                  </p>
+
+                  <p>
+                  Student profile - Indian:
+                  <%= row['%RaceAmericanIndian'] %>%
+                  </p>
+
+                  <p>
+                  Student profile - Asian:
+                  <%= row['%RaceAsian'] %>%
+                  </p>
+
+                  <p>
+                  Student profile - Black:
+                  <%= row['%RaceBlack'] %>%
+                  </p>
+
+                  <p>
+                  Student profile - Hispanic:
+                  <%= row['%RaceHispanic'] %>%
+                  </p>
+
+                  <p>
+                  Student profile - White:
+                  <%= row['%RaceWhite'] %>%
+                  </p>
+
+                  <p>
+                  Student profile - Unknown:
+                  <%= row['%RaceUnknown'] %>%
+                  </p>
+                  <% end %>
+                  <% end %>
+
                 </div>
               </div>
 
