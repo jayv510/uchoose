@@ -8,7 +8,6 @@ import { loadDynamicBannerText } from '../components/banner';
 loadDynamicBannerText();
 
 
-
 import Rails from 'rails-ujs';
 Rails.start();
 import {Chat} from "../components/chat.js"

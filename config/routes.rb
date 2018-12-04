@@ -4,11 +4,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :bookings do
-    resources :reviews, only: [:index, :new, :create]
-  end
-  resources :reviews, only:[:show, :edit, :update, :destroy]
-
   devise_scope :mentor do
   get 'mentors', to: 'mentors/sessions#index'
   get 'mentors/:id', to: 'mentors/sessions#show', as: :mentor
@@ -16,10 +11,10 @@ Rails.application.routes.draw do
   patch 'mentors/:id', to: 'mentors/sessions#update'
   end
 
+  get '/mentors/:mentor_id/review_mentors/new', to: 'review_mentors#new', as: :review_mentors
+  post '/mentors/:mentor_id/review_mentors/new', to: 'review_mentors#create'
+
   resources :tokens, only: [:create]
-
   resources :videotokens, only: [:create]
-
   resources :calldurations, only: [:create]
-
 end
