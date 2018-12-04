@@ -56,7 +56,7 @@ end
     description: Faker::Lorem.paragraph(10, true, 5),
     description_two: Faker::Lorem.paragraph(5, true, 3),
     remote_photo_url: avatars.sample,
-    rate: [3..12].sample)
+    rate: (3..12).to_a.sample)
 end
 
 
@@ -104,7 +104,7 @@ Mentor.create(
 
 puts "Generating fake prospectives ..."
 
-5.times do
+20.times do
   Prospective.create(
     email: Faker::Internet.email,
     password: "123456",

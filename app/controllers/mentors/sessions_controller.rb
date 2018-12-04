@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'csv'
 
 class Mentors::SessionsController < Devise::SessionsController
     # before_action :authenticate_prospective!
@@ -93,6 +94,10 @@ class Mentors::SessionsController < Devise::SessionsController
     @mentor = Mentor.find(params[:id])
     @prospective = current_prospective
     # @review_mentors = @mentor.review_mentors
+
+    @csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
+    @filepath    = 'app/assets/data/UniversityData.csv'
+
   end
 
   def edit
