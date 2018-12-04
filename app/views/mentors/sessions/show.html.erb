@@ -1,29 +1,27 @@
 <%= render 'shared/navbar_two' %>
 
-<div class="banner-three" style= "background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.)), url('<%= cl_image_path 'figure_1.png' %>');" id= "one">
-
-<div class="containter">
-
-  <div class="profile-card">
+<div class="banner-three" style= "background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('<%= cl_image_path 'figure_1.png' %>');" id= "one">
+  <div class="containter">
+    <div class="profile-card">
 
 
      <div class="mid-container">
-        <div class="row">
+      <div class="row">
 
-          <div class="col-xs-12 col-sm-4 col-md-4">
-            <div class="profile-left">
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <div class="profile-left">
 
-              <% if @mentor.photo.present? == true %>
-                <%= cl_image_tag @mentor.photo, height: 280, width: 280, crop: :fill %>
-                <% else %>
-                <%= cl_image_tag("non_existing_id.jpg",
-                :width => 280, :height => 280,
-                :crop => :fill) %>
+            <% if @mentor.photo.present? == true %>
+            <%= cl_image_tag @mentor.photo, height: 280, width: 280, crop: :fill %>
+            <% else %>
+            <%= cl_image_tag("non_existing_id.jpg",
+              :width => 280, :height => 280,
+              :crop => :fill) %>
               <% end %>
 
-              <button type="button" class="button-chat btn-treehouse" id="startChat" data-toggle="modal" data-target="#chatModal" data-backdrop="static" data-keyboard="false"><i class="fas fa-comments"></i> &nbsp; Chat with <%= @mentor.first_name %> </button>
+              <button type="button" class="button-chat btn-treehouse-one" id="startChat" data-toggle="modal" data-target="#chatModal" data-backdrop="static" data-keyboard="false"><i class="fas fa-comments"></i> &nbsp; Chat with <%= @mentor.first_name %> </button>
 
-              <button type="button" class="button-chat btn-treehouse" id="startVideo" data-toggle="modal" data-target="#videoModal" data-backdrop="static" data-keyboard="false"><i class="fas fa-video"></i> &nbsp; Video chat with <%= @mentor.first_name %> </button>
+              <button type="button" class="button-chat btn-treehouse-two" id="startVideo" data-toggle="modal" data-target="#videoModal" data-backdrop="static" data-keyboard="false"><i class="fas fa-video"></i> &nbsp; Video chat with <%= @mentor.first_name %> </button>
 
               <h3 id="go-back"> <%= link_to "Back to mentors", mentors_path %> </h3>
             </div>
@@ -31,22 +29,22 @@
 
           <div class="col-xs-12 col-sm-8 col-md-8">
             <div class="profile-right">
-              <span id = "name-title">  <%= @mentor.first_name.upcase %>  <%= @mentor.last_name.upcase %> <p>(<%= @mentor.nationality %>)</p></span>
+              <h1><span id = "name-title">  <%= @mentor.first_name %>  <%= @mentor.last_name.upcase %> <p>(<%= @mentor.nationality %>)</p></span></h1>
 
-              <h4 id="uni"><strong> <%= @mentor.university %> </strong></h4>
+              <h4 id="uni"> <%= @mentor.university %></h4>
 
               <% count = 0 %>
               <% 5.times do %>
-                <% if @mentor.average_review > count %>
-                  <% if (@mentor.average_review - count) <= 0.9 %>
-                    <ion-icon  name="star-half" style = "color: #F57170" ></ion-icon>
-                  <% else %>
-                    <ion-icon  name="star" style = "color: #F57170"></ion-icon>
-                  <% end %>
-                <% else %>
-                  <ion-icon  name="star-outline" style = "color: #F57170"></ion-icon>
-                <% end %>
-                <% count += 1 %>
+              <% if @mentor.average_review > count %>
+              <% if (@mentor.average_review - count) <= 0.9 %>
+              <ion-icon  name="star-half" style = "color: #F57170" ></ion-icon>
+              <% else %>
+              <ion-icon  name="star" style = "color: #F57170"></ion-icon>
+              <% end %>
+              <% else %>
+              <ion-icon  name="star-outline" style = "color: #F57170"></ion-icon>
+              <% end %>
+              <% count += 1 %>
               <% end %>
 
               <%= @mentor.average_review %>
@@ -56,7 +54,7 @@
               <h3 id="major"> <strong>Major: </strong><%= @mentor.major %></h3>
               <h3 id="major-cat"> <strong> Category:</strong> <%= @mentor.major_category %> </h3>
               <h3 id="level"><strong> Level: </strong> <%= @mentor.degree_level %> </h3>
-              <h3><strong> Video Calling: </strong> $<%= @mentor.rate %> /30 mins</h3>
+              <h3 id= "rate"><strong> Video Calling: </strong> $<%= @mentor.rate %> /30 mins</h3>
 
               <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#home">Mentor profile</a></li>
@@ -83,9 +81,9 @@
                         <% count = 0 %>
                         <% 5.times do %>
                         <% if review.rating > count %>
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star" id = "icon-color"></i>
                         <% else %>
-                        <i class="far fa-star"></i>
+                        <i class="far fa-star" id = "icon-color"></i>
                         <% end %>
                         <% count += 1 %>
                         <% end %>
@@ -206,8 +204,18 @@
 
             </div>
           </div>
-        </div>
+
+
+
+      </div>
     </div>
+
+  </div>
+ </div>
+</div>
+
+
+
 
 
 
@@ -221,7 +229,6 @@
 
   </div>
 
-<%= link_to "Leave a review for this mentor", review_mentors_path(@mentor) %>
 
   <div class="footer">
     <div class="footer-links">
@@ -235,6 +242,7 @@
       Made with <i class="fas fa-heart"></i> by Le Decisive
     </div>
   </div>
+<%= link_to "Leave a review for this mentor", review_mentors_path(@mentor) %>
 
 </div>
 
@@ -262,6 +270,7 @@
     </div>
   </div>
   </div>
+<%= link_to "Leave a review for this mentor", review_mentors_path(@mentor) %>
 
 
 <!-- Video chat modal -->
