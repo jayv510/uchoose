@@ -113,30 +113,46 @@
 <!-- Video chat modal -->
 <div id="videoModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-    <div class="modal-content video" id="<%= @mentor.id %>A<%= current_prospective.id %>">
+    <div class="modal-content video" style =
+    "border-radius: 8px 8px 8px 8px;" id="<%= @mentor.id %>A<%= current_prospective.id %>">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Video chat with <%= @mentor.first_name %></h4>
       </div>
-      <div class="modal-body">
-       <div id="remote-media"></div>
-       <div id="controls">
-         <div id="preview">
-           <p class="instructions">Preview</p>
-           <div id="local-media"></div>
-           <button id="button-preview">Preview My Camera</button>
-         </div>
 
-         <div id="room-controls">
-           <!-- <p class="instructions">Room Name:</p>
-           <input id="room-name" type="text" placeholder="Enter a room name" /> -->
-           <button id="button-join">Join Room</button>
-           <button id="button-leave">Leave Room</button>
-         </div>
+            <div class="modal-body">
+              <div class = "video-container">
+                <div class = "row">
+                  <div class = "col-xs-4 col-sm-4 col-md-4">
+                   <div id="controls">
+                     <div id="preview">
+                       <div id="local-media">
+                        <img src="" alt="">
+                       </div>
+                       <button id="button-preview">Preview My Camera</button>
+                       <div id="room-controls">
+                 <!-- <p class="instructions">Room Name:</p>
+                   <input id="room-name" type="text" placeholder="Enter a room name" /> -->
+                   <button id="button-join">Join Room</button>
+                   <button id="button-leave">Leave Room</button>
+                 </div>
+                 <div id="log"></div>
 
-         <div id="log"></div>
-       </div>
+                 </div>
+               </div>
+             </div>
+
+             <div class = "col-xs-8 col-sm-8 col-md-8">
+
+              <div id="remote-media"></div>
+            </div>
+
+          </div>
+        </div>
       </div>
+
+
+
       <div class="modal-footer">
       </div>
     </div>
