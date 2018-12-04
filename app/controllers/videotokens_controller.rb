@@ -2,14 +2,10 @@ class VideotokensController < ApplicationController
   def create
     # Define User Identity
     if current_prospective != nil
-      identity = current_prospective.first_name + " " + current_prospective.last_name
+      identity = current_prospective.first_name
     elsif current_mentor != nil
-      identity = current_mentor.first_name + " " + current_mentor.last_name
+      identity = current_mentor.first_name
     end
-
-    # Create Grant for Access Token
-    grant = Twilio::JWT::AccessToken::ChatGrant.new
-    grant.service_sid = ENV['TWILIO_CHAT_SERVICE_SID']
 
     # Create Video grant for our token
     video_grant = Twilio::JWT::AccessToken::VideoGrant.new
