@@ -34,7 +34,7 @@ avatars = [
 puts "Generating fake mentors ..."
 
 100.times do
-  Mentor.create(
+  m = Mentor.create(
     email: Faker::Internet.email,
     password: "123456",
     first_name: Faker::Name.first_name,
@@ -46,8 +46,36 @@ puts "Generating fake mentors ..."
     degree_level: degree_levels.sample,
     description: Faker::Lorem.paragraph(10, true, 5),
     description_two: Faker::Lorem.paragraph(5, true, 3),
+    remote_photo_url: avatars.sample,
+    rate: [3..12].sample)
+end
+
+20.times do
+  Prospective.create(
+    email: Faker::Internet.email,
+    password: "123456",
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    nationality: Faker::Address.country,
     remote_photo_url: avatars.sample)
 end
+
+mentor_start_id = Mentor.last.id - Mentor.count + 1
+mentor_end_id = Mentor.last.id
+mentor_id_sample = *(mentor_start_id..mentor_end_id)
+prospective_start_id = Prospective.last.id - Prospective.count + 1
+prospective_end_id = Prospective.last.id
+prospective_id_sample = *(prospective_start_id..prospective_end_id)
+
+1000.times do
+  ReviewMentor.create(
+    content: ["Very good talk, thank you", "Excellent", "Very helpful", "Great help", "Gives really good advice!", "Really informative sessions and very helpful!", "very very helpful, explains things very clearly", "Very informative, willing to do extra to help you understand", "Great help", "Recommended!", "Great experience!", "Affordable and helpful", "Very friendly", "Nice chat!", "Very happy with the experience.", "Would recommend to friends", "Good conversation!", "Satisfied with the answers!", "Thank you for the information!"].sample,
+    rating: (3..5).to_a.sample,
+    mentor_id: mentor_id_sample.sample,
+    prospective_id: prospective_id_sample.sample)
+
+
+  end
 
 Mentor.create(
   email: "mentor@test.com",
@@ -62,11 +90,6 @@ Mentor.create(
   description: Faker::Lorem.paragraph(10, true, 5),
   description_two: Faker::Lorem.paragraph(5, true, 3),
   remote_photo_url: avatars.sample)
-
-# mentor_start_id = Mentor.last.id - Mentor.count + 1
-# mentor_end_id = Mentor.last.id
-# mentor_id_sample = *(mentor_start_id..mentor_end_id)
-
 
 puts "Generating fake prospectives ..."
 
@@ -88,9 +111,6 @@ Prospective.create(
   nationality: Faker::Address.country,
   remote_photo_url: avatars.sample)
 
-# prospective_start_id = Prospective.last.id - Prospective.count + 1
-# prospective_end_id = Prospective.last.id
-# prospective_id_sample = *(prospective_start_id..prospective_end_id)
 
 
 puts "Seeding complete."

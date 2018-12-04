@@ -11,6 +11,8 @@
   align-items: center;
 }
 
+
+
 #banner-typed-text {
   font-size:20px;
 }
@@ -19,10 +21,18 @@
   padding: 50px;
 }
 
+
 .stuff h1 {
   padding: 15px;
   font-size: 50px;
 }
+
+ @media (max-width: 800px) {
+  .stuff h1{
+   font-size: 30px;
+  }
+}
+
 .stuff p {
   padding-bottom: 50px;
 
@@ -80,6 +90,17 @@
 
 }
 
+.banner-three {
+  display:block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width:100vw;
+  padding-top: 10px;
+  align-items: center;
+  justify-content:center;
+}
+
 .container {
   display: flex;
 }
@@ -102,6 +123,14 @@
   text-align: center;
   justify-content:center;
 
+}
+
+
+ @media (max-width: 800px) {
+  .banner-two{
+   width: 100vw;
+   height: 0vh;
+  }
 }
 
 .pho {

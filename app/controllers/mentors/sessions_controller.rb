@@ -28,7 +28,9 @@ class Mentors::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
   def index
+
     # def search_data
     #       {
     #   all: [:university, :major, :major_category, :nationality, :first_name, :last_name].join(" ")
@@ -48,7 +50,10 @@ class Mentors::SessionsController < Devise::SessionsController
         # misspellings: { edit_distance: 1, below: 5 },
       #   # aggs: [:university, :nationality, :major_category, :major, :first_name, :last_name, :degree_level]
       # })
-      @mentors = Mentor.search(params[:query]).order(:first_name)
+
+      @mentors_with_nan = Mentor.search(params[:query])
+      @mentors_no_nan = @mentors_with_nan.reject{ |x| x.average_review.nan?}
+      @mentors = @mentors_no_nan.sort_by{|x|x.average_review}.reverse
         # ,{
         # index: "analyzed",
         # fields: [:university, :major_category, :major, :nationality, :first_name, :last_name, :degree_level],
@@ -62,12 +67,32 @@ class Mentors::SessionsController < Devise::SessionsController
       @result = "Showing mentors matching \"#{params[:query]}\""
 
     else
-      @mentors = Mentor.all.order(:first_name)
+
+      #sorting
+      if params[:sortname].present?
+          @mentors = Mentor.all.order(:first_name)
+
+      elsif params[:sortreview].present?
+
+          @mentors_no_nan = Mentor.all.reject{ |x| x.average_review.nan?}
+          @mentors = @mentors_no_nan.sort_by{|x|x.average_review}.reverse
+
+      elsif params[:sortmajor].present?
+          @mentors = Mentor.all.order(:major)
+
+      elsif params[:sortuniversity].present?
+          @mentors = Mentor.all.order(:university)
+
+      else
+        @mentors = Mentor.all.order(:first_name)
+      end
     end
   end
 
   def show
     @mentor = Mentor.find(params[:id])
+    @prospective = current_prospective
+    # @review_mentors = @mentor.review_mentors
   end
 
   def edit

@@ -1,0 +1,16 @@
+<h2> Video session ended: </h2>
+<p> Call time: </p>
+<p> Price: $<%= @mentor.rate %>/30 mins</p>
+<h3> Subtotal: </h3>
+
+<br>
+<p> Thank you for using UChoose! </p>
+<br>
+<p> Please kindly leave a review for <%= @mentor.first_name %>!</p>
+
+      <%= simple_form_for [@review_mentor.mentor, @review_mentor] do |f| %>
+        <%= f.input :rating, collection: 0..5 %>
+        <%= f.hidden_field :prospective_id, :value => @prospective.id %>
+        <%= f.input :content%>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
