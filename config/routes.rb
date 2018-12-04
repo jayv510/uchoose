@@ -11,11 +11,10 @@ Rails.application.routes.draw do
   patch 'mentors/:id', to: 'mentors/sessions#update'
   end
 
-  resources :tokens, only: [:create]
-  
-  resources :videotokens, only: [:create]
-
   get '/mentors/:mentor_id/review_mentors/new', to: 'review_mentors#new', as: :review_mentors
   post '/mentors/:mentor_id/review_mentors/new', to: 'review_mentors#create'
 
+  resources :tokens, only: [:create]
+  resources :videotokens, only: [:create]
+  resources :calldurations, only: [:create]
 end
