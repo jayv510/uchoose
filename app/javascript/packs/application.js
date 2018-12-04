@@ -1,9 +1,5 @@
 import "bootstrap";
 
-import Rails from 'rails-ujs';
-Rails.start();
-import {Chat} from "components/chat.js"
-import "components/video.js"
 
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 initUpdateNavbarOnScroll();
@@ -11,3 +7,8 @@ initUpdateNavbarOnScroll();
 import { loadDynamicBannerText } from '../components/banner';
 loadDynamicBannerText();
 
+
+
+import Rails from 'rails-ujs';
+Rails.start();
+import {Chat} from "../components/chat.js"

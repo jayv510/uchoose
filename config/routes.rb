@@ -16,11 +16,10 @@ Rails.application.routes.draw do
   patch 'mentors/:id', to: 'mentors/sessions#update'
   end
 
-  # resources :chats, only: [:show]
-  get 'chats', to: 'chats#show'
-
   resources :tokens, only: [:create]
 
   resources :videotokens, only: [:create]
+
+  resources :calldurations, only: [:create]
 
 end

@@ -51,9 +51,9 @@ import Rails from 'rails-ujs';
     // Bind button to join room
     document.getElementById('button-join').onclick = function () {
       // roomName = document.getElementById('room-name').value;
-      roomName = "uchoose Premium Chat"
+      roomName = "Uchoose Premium Video Chat"
       if (roomName) {
-        log("Joining room '" + roomName + "'...");
+        log("Joining chat '" + roomName + "'...");
 
         var connectOptions = { name: roomName, logLevel: 'debug' };
         if (previewTracks) {
@@ -108,7 +108,7 @@ import Rails from 'rails-ujs';
     }
 
     room.participants.forEach(function(participant) {
-      log("Already in Room: '" + participant.identity + "'");
+      log("Already in Chat: '" + participant.identity + "'");
       var previewContainer = document.getElementById('remote-media');
       attachParticipantTracks(participant, previewContainer);
     });
@@ -139,11 +139,24 @@ import Rails from 'rails-ujs';
     // Also remove media for all remote participants
     room.on('disconnected', function() {
       log('Left');
+
+      const roomSID = activeRoom.sid;
+      // console.log(`....................${identity}`)
+      // console.log(`....................${roomSID}`);
+      // console.log(`....................${room.localParticipant.sid}`);
+
       detachParticipantTracks(room.localParticipant);
       room.participants.forEach(detachParticipantTracks);
       activeRoom = null;
       document.getElementById('button-join').style.display = 'inline';
       document.getElementById('button-leave').style.display = 'none';
+
+      Rails.ajax({
+        url: '/calldurations',
+        type: "POST",
+        data: `roomSID=${roomSID}&participantSID=${room.localParticipant.sid}`,
+        success: console.log('post success')
+      })
     });
   }
 
