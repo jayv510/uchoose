@@ -5,6 +5,9 @@
   padding: 15px 65px;
 }
 
+#uni h4 {
+  line-height: 0.8;
+}
 
 
 .profile-right h3 {
@@ -20,7 +23,7 @@ span {
 }
 
 #name-title {
-  font-size: 30px;
+  font-size: 28px;
   padding-top: 12px;
   margin-bottom: -15px;
 }
@@ -31,9 +34,18 @@ span {
 }
 
 
+.profile-right h1 {
+font-weight:600;
+}
+#icon-color {
+  color: #F57170;
+}
 
-
-
+.list-group-item p {
+  margin-top: 3px;
+  line-height: 1.5;
+  font-size:16px;
+}
 
 #major {
   font-size: 16px;
@@ -41,15 +53,16 @@ span {
   line-height: 1.5;
 }
 
-#major-cat, #level {
+#major-cat, #level, #rate {
   font-size: 16px;
   margin: 5px;
   line-height: 1.5;
 
 }
 
-#level {
+#rate {
   padding-bottom:2.5vh;
+  color: #D5A021;
 }
 
 #nat {
@@ -63,7 +76,7 @@ span {
 #about-me-title {
   font-size: 20px;
   font-weight: 600;
-  color: #5B98C9;
+  color: #F57170;
 }
 
 #about-me {
@@ -71,10 +84,14 @@ span {
   text-align: justify;
 }
 
+#about-me p , #how p {
+  font-size:15px;
+}
+
 #how-title {
   font-size: 20px;
   font-weight: 600;
-  color: #5B98C9;
+  color: #F57170;
 }
 
 #how {
@@ -91,8 +108,7 @@ span {
 }
 
 #go-back {
-  margin-left: 15px;
-  font-size: 25px;
+  font-size: 15px;
 }
 
 
@@ -126,6 +142,31 @@ span {
     height: 200px;
   }
 }
+
+
+@media (max-width: 750px) {
+
+  .profile-left img {
+    width:150px;
+    height:150px;
+    margin-right:5px;
+    justify-content:center;
+    flex-direction: column;
+
+
+     }
+}
+
+@media (max-width: 750px) {
+
+  .profile-left  {
+    padding:0px;
+    justify-content:center;
+
+
+     }
+}
+
 @media (max-width: 1100px) {
   .profile-left {
     width: 100%;
@@ -134,6 +175,7 @@ span {
 
 .profile-right {
   margin: 5px 30px;
+  margin-left:20px;
 }
 
 @media (max-width: 1100px) {
@@ -154,6 +196,16 @@ span {
   position: relative;
 }
 
+
+@media (max-width: 750px) {
+
+  .profile-card  {
+   padding: 5px;
+   margin: 1px;
+   justify-content: center;
+   opacity:0.95;
+     }
+}
 
 
 .imgb {
@@ -311,7 +363,9 @@ span {
 
 //-------VIDEO CHAT-----------
 
-
+#preview {
+  margin-left:10px;
+}
 
 #local-media {
   width: 280px;
@@ -349,7 +403,7 @@ span {
 }
 
 #log {
-  height: 16vh;
+  height: 12vh;
   overflow-y: scroll;
   border: 1px solid #cececc;
   margin-top:10px;
