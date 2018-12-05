@@ -47,20 +47,25 @@ CSV.foreach(filepath, csv_options) do |row|
    university_name << row['Name']
 end
 
+# --------------------------COUNTRIES----------------------------
+
+countries = ["U.S.A", "U.S.A", "U.S.A", "U.S.A", "U.S.A", "China", "China", "China", "India", "India", "South Korea", "Saudi Arabia", "Canada", "Vietnam", "Taiwan", "Japan", "Mexico", "Brazil", "Nepal", "Iran", "Nigeria", "United Kingdom", "Turkey", "Kuwait", "Germany", "France", "Indonesia", "Venezuela", "Malaysia", "Colombia", "Pakistan", "Bangladesh", "Spain"]
+
+
 # -------------------------MENTORS--------------------------------------
 
 puts "Generating fake male mentors ..."
 
 50.times do
-  random = rand(172)
+  random = rand(173)-1
 
   Mentor.create(
   email: Faker::Internet.email,
   password: "123456",
   first_name: Faker::Name.male_first_name,
   last_name: Faker::Name.last_name,
-  nationality: Faker::Address.country,
-  university: Faker::University.name,
+  nationality: countries.sample,
+  university: university_name.sample,
   major_category: majors[random].split('%')[1],
   major: majors[random].split('%')[0].titleize,
   degree_level: degree_levels.sample,
@@ -80,7 +85,7 @@ puts "Generating fake female mentors ..."
   password: "123456",
   first_name: Faker::Name.female_first_name,
   last_name: Faker::Name.last_name,
-  nationality: Faker::Address.country,
+  nationality: countries.sample,
   university: university_name.sample,
   major_category: majors[random].split('%')[1],
   major: majors[random].split('%')[0].titleize,
@@ -96,10 +101,10 @@ Mentor.create(
   password: "123456",
   first_name: "Monica",
   last_name: "Mentor",
-  nationality: Faker::Address.country,
-  university: Faker::University.name,
-  major_category: majors[rand(172)].split('%')[1],
-  major: majors[rand(172)].split('%')[0].titleize,
+  nationality: countries.sample,
+  university: university_name.sample,
+  major_category: majors[rand(172)-1].split('%')[1],
+  major: majors[rand(172)-1].split('%')[0].titleize,
   degree_level: degree_levels.sample,
   description: Faker::Lorem.paragraph(10, true, 5),
   description_two: Faker::Lorem.paragraph(5, true, 3),
@@ -109,13 +114,13 @@ Mentor.create(
 
 puts "Generating fake prospectives ..."
 
-5.times do
+30.times do
   Prospective.create(
     email: Faker::Internet.email,
     password: "123456",
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    nationality: Faker::Address.country,
+    nationality: countries.sample,
     remote_photo_url: male_avatars.sample)
 end
 
@@ -124,7 +129,7 @@ Prospective.create(
   password: "123456",
   first_name: "Peter",
   last_name: "Prospective",
-  nationality: Faker::Address.country,
+  nationality: countries.sample,
   remote_photo_url: male_avatars.sample)
 
 # ----------------------REVIEWS--------------------------------------------------
