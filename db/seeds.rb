@@ -1,26 +1,19 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-require 'csv'
-
-
-puts "Deleting any existing users ..."
+puts "Deleting any existing users and reviews..."
+ReviewMentor.delete_all
 Prospective.delete_all
 Mentor.delete_all
 
-major_categories = ["Agriculture & Natural Resources","Arts","  Biology & Life Science","Business","Communications & Journalism","Computers & Mathematics","Education","Engineering","Health","Humanities & Liberal Arts","Industrial Arts & Consumer Services","Interdisciplinary","Law & Public Policy","Physical Sciences","Psychology & Social Work","Social Science"]
-majors = ["PLANT SCIENCE AND AGRONOMY", "BIOCHEMICAL SCIENCES", "BUSINESS MANAGEMENT AND ADMINISTRATION", "MATHEMATICS AND COMPUTER SCIENCE", "ARCHITECTURAL ENGINEERING", "PHARMACY PHARMACEUTICAL SCIENCES AND ADMINISTRATION", "ENGLISH LANGUAGE AND LITERATURE", "PUBLIC POLICY", "ECONOMICS", "INTERNATIONAL RELATIONS"]
-degree_levels = ["Diploma", "Associates", "Bachelors", "Honours", "Masters", "Doctoral", "Post-doctoral"]
-avatars = [
-  "https://res.cloudinary.com/uchoose/image/upload/v1543474940/u4achirktcktynzdw1ua.jpg",
+# -------------------------------AVATARS--------------------------
+
+male_avatars = ["https://res.cloudinary.com/uchoose/image/upload/v1543474940/u4achirktcktynzdw1ua.jpg",
   "https://res.cloudinary.com/uchoose/image/upload/v1543474030/kss4t0poocsen4vc6qxe.jpg",
-  "https://res.cloudinary.com/uchoose/image/upload/v1543473567/lalmmlaqismleae9g4d3.jpg",
-  "https://res.cloudinary.com/uchoose/image/upload/v1543466172/cwxzcxqke0d53ktwe1ct.jpg",
   "https://res.cloudinary.com/uchoose/image/upload/v1543494350/man_3.jpg",
+  "https://res.cloudinary.com/uchoose/image/upload/v1543494346/man_20.jpg",
+  "https://res.cloudinary.com/uchoose/image/upload/v1543494346/man_18.jpg",
+]
+
+female_avatars = ["https://res.cloudinary.com/uchoose/image/upload/v1543473567/lalmmlaqismleae9g4d3.jpg",
+  "https://res.cloudinary.com/uchoose/image/upload/v1543466172/cwxzcxqke0d53ktwe1ct.jpg",
   "https://res.cloudinary.com/uchoose/image/upload/v1543494349/man_4.jpg",
   "https://res.cloudinary.com/uchoose/image/upload/v1543494348/man_5.jpg",
   "https://res.cloudinary.com/uchoose/image/upload/v1543494348/man_11.jpg",
@@ -28,12 +21,24 @@ avatars = [
   "https://res.cloudinary.com/uchoose/image/upload/v1543494348/man_10.jpg",
   "https://res.cloudinary.com/uchoose/image/upload/v1543494346/man_19.jpg",
   "https://res.cloudinary.com/uchoose/image/upload/v1543494346/man_15.jpg",
-  "https://res.cloudinary.com/uchoose/image/upload/v1543494346/man_20.jpg",
-  "https://res.cloudinary.com/uchoose/image/upload/v1543494346/man_18.jpg",
-  "https://res.cloudinary.com/uchoose/image/upload/v1543494346/man_22.jpg"]
+  "https://res.cloudinary.com/uchoose/image/upload/v1543494346/man_22.jpg"
+]
 
+# --------------------------DEGREE LEVELS----------------------------
 
-puts "Generating fake mentors ..."
+degree_levels = ["Diploma", "Associate's", "Bachelor's", "Honours", "Master's", "Doctoral", "Post-doctoral"]
+
+# ------------------MAJORS AND MAJORS CATEGORIES----------------------
+
+csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
+filepath    = 'app/assets/data/MajorsData.csv'
+majors = []
+CSV.foreach(filepath, csv_options) do |row|
+   major = "#{row['Major']}%#{row['Major_Category']}"
+   majors << major
+end
+
+# -----------------------UNIVERSITY NAMES------------------------------
 
 csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
 filepath    = 'app/assets/data/UniversityData.csv'
@@ -42,51 +47,49 @@ CSV.foreach(filepath, csv_options) do |row|
    university_name << row['Name']
 end
 
-100.times do
-    Mentor.create(
-    email: Faker::Internet.email,
-    password: "123456",
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    nationality: Faker::Address.country,
-    university: university_name.sample,
-    major_category: major_categories.sample,
-    major: majors.sample.titleize,
-    degree_level: degree_levels.sample,
-    description: Faker::Lorem.paragraph(10, true, 5),
-    description_two: Faker::Lorem.paragraph(5, true, 3),
-    remote_photo_url: avatars.sample,
-    rate: (3..12).to_a.sample)
+# -------------------------MENTORS--------------------------------------
+
+puts "Generating fake male mentors ..."
+
+50.times do
+  random = rand(172)
+
+  Mentor.create(
+  email: Faker::Internet.email,
+  password: "123456",
+  first_name: Faker::Name.male_first_name,
+  last_name: Faker::Name.last_name,
+  nationality: Faker::Address.country,
+  university: Faker::University.name,
+  major_category: majors[random].split('%')[1],
+  major: majors[random].split('%')[0].titleize,
+  degree_level: degree_levels.sample,
+  description: Faker::Lorem.paragraph(10, true, 5),
+  description_two: Faker::Lorem.paragraph(5, true, 3),
+  remote_photo_url: male_avatars.sample,
+  rate: (3..12).to_a.sample)
 end
 
+puts "Generating fake female mentors ..."
 
+50.times do
+  random = rand(172)
 
-20.times do
-  Prospective.create(
-    email: Faker::Internet.email,
-    password: "123456",
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    nationality: Faker::Address.country,
-    remote_photo_url: avatars.sample)
+  Mentor.create(
+  email: Faker::Internet.email,
+  password: "123456",
+  first_name: Faker::Name.female_first_name,
+  last_name: Faker::Name.last_name,
+  nationality: Faker::Address.country,
+  university: university_name.sample,
+  major_category: majors[random].split('%')[1],
+  major: majors[random].split('%')[0].titleize,
+  degree_level: degree_levels.sample,
+  description: Faker::Lorem.paragraph(10, true, 5),
+  description_two: Faker::Lorem.paragraph(5, true, 3),
+  remote_photo_url: female_avatars.sample,
+  rate: (3..12).to_a.sample)
 end
-
-mentor_start_id = Mentor.last.id - Mentor.count + 1
-mentor_end_id = Mentor.last.id
-mentor_id_sample = *(mentor_start_id..mentor_end_id)
-prospective_start_id = Prospective.last.id - Prospective.count + 1
-prospective_end_id = Prospective.last.id
-prospective_id_sample = *(prospective_start_id..prospective_end_id)
-
-1000.times do
-  ReviewMentor.create(
-    content: ["Very good talk, thank you", "Excellent", "Very helpful", "Great help", "Gives really good advice!", "Really informative sessions and very helpful!", "very very helpful, explains things very clearly", "Very informative, willing to do extra to help you understand", "Great help", "Recommended!", "Great experience!", "Affordable and helpful", "Very friendly", "Nice chat!", "Very happy with the experience.", "Would recommend to friends", "Good conversation!", "Satisfied with the answers!", "Thank you for the information!"].sample,
-    rating: (3..5).to_a.sample,
-    mentor_id: mentor_id_sample.sample,
-    prospective_id: prospective_id_sample.sample)
-
-
-  end
 
 Mentor.create(
   email: "mentor@test.com",
@@ -95,23 +98,25 @@ Mentor.create(
   last_name: "Mentor",
   nationality: Faker::Address.country,
   university: Faker::University.name,
-  major_category: major_categories.sample,
-  major: majors.sample.titleize,
+  major_category: majors[rand(172)].split('%')[1],
+  major: majors[rand(172)].split('%')[0].titleize,
   degree_level: degree_levels.sample,
   description: Faker::Lorem.paragraph(10, true, 5),
   description_two: Faker::Lorem.paragraph(5, true, 3),
-  remote_photo_url: avatars.sample)
+  remote_photo_url: female_avatars.sample)
+
+# ---------------------PROSPECTIVES-------------------------------------------
 
 puts "Generating fake prospectives ..."
 
-20.times do
+5.times do
   Prospective.create(
     email: Faker::Internet.email,
     password: "123456",
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     nationality: Faker::Address.country,
-    remote_photo_url: avatars.sample)
+    remote_photo_url: male_avatars.sample)
 end
 
 Prospective.create(
@@ -120,10 +125,25 @@ Prospective.create(
   first_name: "Peter",
   last_name: "Prospective",
   nationality: Faker::Address.country,
-  remote_photo_url: avatars.sample)
+  remote_photo_url: male_avatars.sample)
 
+# ----------------------REVIEWS--------------------------------------------------
 
+mentor_start_id = Mentor.last.id - Mentor.count + 1
+mentor_end_id = Mentor.last.id
+mentor_id_sample = *(mentor_start_id..mentor_end_id)
+prospective_start_id = Prospective.last.id - Prospective.count + 1
+prospective_end_id = Prospective.last.id
+prospective_id_sample = *(prospective_start_id..prospective_end_id)
+
+puts "Generating fake reviews ..."
+
+1000.times do
+  ReviewMentor.create(
+    content: ["Very good talk, thank you", "Excellent", "Very helpful", "Great help", "Gives really good advice!", "Really informative sessions and very helpful!", "very very helpful, explains things very clearly", "Very informative, willing to do extra to help you understand", "Great help", "Recommended!", "Great experience!", "Affordable and helpful", "Very friendly", "Nice chat!", "Very happy with the experience.", "Would recommend to friends", "Good conversation!", "Satisfied with the answers!", "Thank you for the information!"].sample,
+    rating: (3..5).to_a.sample,
+    mentor_id: mentor_id_sample.sample,
+    prospective_id: prospective_id_sample.sample)
+  end
 
 puts "Seeding complete."
-
-
