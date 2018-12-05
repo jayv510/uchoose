@@ -296,8 +296,8 @@
                        <div id="room-controls">
                  <!-- <p class="instructions">Room Name:</p>
                    <input id="room-name" type="text" placeholder="Enter a room name" /> -->
-                   <button id="button-join">Join Room</button>
-                   <button id="button-leave" data-toggle="modal" data-target="#paymentModal">Leave Room</button>
+                   <button id="button-join">Start video!</button>
+                   <button id="button-leave" data-toggle="modal" data-target="#paymentModal">Leave chat</button>
                  </div>
                  <div id="log"></div>
 
@@ -332,19 +332,25 @@
         <h4 class="modal-title">Payment confirmation</h4>
       </div>
       <div class="modal-body">
-
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
           <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
           <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
         </svg>
         <p class="success"> Payment successful </p>
-        <p><%= DateTime.now.strftime("%a, %e %b %Y %H:%M:%S (GMT%z)") %></p>
-        <h3>Recipient: <%= @mentor.first_name %> <%= @mentor.last_name %></h3>
-        <p><%= @mentor.email %></p>
-        <h3 id="time">Time</h3>
-        <h3 id="cost">Cost</h3>
-
-        <%= link_to "Leave a review", review_mentors_path(@mentor) %>
+        <div class = "payment-container">
+          <div class = "row">
+            <div class = "col-xs-12 col-sm-6 col-md-6" id = "left-payment">
+              <p><%= DateTime.now.strftime("%a, %e %b %Y %H:%M:%S (GMT%z)") %></p>
+              <h3 id="time">Time</h3>
+              <h3 id="cost">Cost</h3>
+            </div>
+            <div class = "col-xs-12 col-sm-6 col-md-6" id = "right-payment">
+              <h4 >Recipient: <%= @mentor.first_name %> <%= @mentor.last_name %></h4>
+              <p ><%= @mentor.email %></p>
+           <%= link_to "Leave a review", review_mentors_path(@mentor) , class: "btn-treehouse-three"%>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
       </div>
