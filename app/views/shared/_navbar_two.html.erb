@@ -1,6 +1,6 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%= link_to mentors_path, class: "navbar-wagon-brand" do %>
   <%= cl_image_tag("UCHOOSE_white.png") %>
   <% end %>
 
@@ -36,7 +36,7 @@
       <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li><a href="#">Messages</a></li>
-        <li><a href="#">Bookings</a></li>
+        <li><a><%= link_to "Search", mentors_path %> </a></li>
       </ul>
     </div>
   </div>
