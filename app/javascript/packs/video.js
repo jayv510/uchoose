@@ -150,11 +150,12 @@ import Rails from 'rails-ujs';
       activeRoom = null;
       document.getElementById('button-join').style.display = 'inline';
       document.getElementById('button-leave').style.display = 'none';
+      const mentorID = document.getElementsByClassName("chat")[0].id.split("A")[0];
 
       Rails.ajax({
-        url: '/calldurations',
+        url: '/call_durations',
         type: "POST",
-        data: `roomSID=${roomSID}&participantSID=${room.localParticipant.sid}`,
+        data: `roomSID=${roomSID}&participantSID=${room.localParticipant.sid}&mentorID=${mentorID}`,
         success: console.log('post success')
       })
     });

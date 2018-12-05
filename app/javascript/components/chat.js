@@ -52,14 +52,15 @@ export class Chat {
 
   setupClient(client) {
     this.client = client;
-    let channelID = document.getElementsByClassName("chat")[0].id;
+    // let channelID = document.getElementsByClassName("chat")[0].id;
+    let channelID = 'Mentor chat (1)'
     console.log(channelID);
     this.client.getChannelByUniqueName(`${channelID}`)
       .then((channel) => this.setupChannel(channel))
       .catch((error) => {
         this.client.createChannel({
           uniqueName: `${channelID}`,
-          friendlyName: `Chat ${channelID}`,
+          friendlyName: `${channelID}`,
           isPrivate: true
         }).then((channel) => this.setupChannel(channel));
       });

@@ -16,5 +16,5 @@ Rails.application.routes.draw do
 
   resources :tokens, only: [:create]
   resources :videotokens, only: [:create]
-  resources :calldurations, only: [:create]
+  resources :call_durations, only: [:create]
 end
