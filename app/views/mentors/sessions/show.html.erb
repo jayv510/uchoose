@@ -187,7 +187,7 @@
                  <!-- <p class="instructions">Room Name:</p>
                    <input id="room-name" type="text" placeholder="Enter a room name" /> -->
                    <button id="button-join">Join Room</button>
-                   <button id="button-leave">Leave Room</button>
+                   <button id="button-leave" data-toggle="modal" data-target="#paymentModal">Leave Room</button>
                  </div>
                  <div id="log"></div>
 
@@ -212,9 +212,6 @@
 
 
 <!-- Payment modal -->
-<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#paymentModal">Payment Modal</button>
-
 <div id="paymentModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -230,7 +227,10 @@
           <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
           <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
         </svg>
-        <p class="success"> Payment successful <%= @mentor.first_name %> <%= @mentor.last_name %> (<%= @mentor.email %>)</p>
+        <p class="success"> Payment successful </p>
+        <p><%= DateTime.now.strftime("%a, %e %b %Y %H:%M:%S (GMT%z)") %></p>
+        <h3>Recipient: <%= @mentor.first_name %> <%= @mentor.last_name %></h3>
+        <p><%= @mentor.email %></p>
         <h3 id="time">Time</h3>
         <h3 id="cost">Cost</h3>
 
