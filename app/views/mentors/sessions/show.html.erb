@@ -1,5 +1,10 @@
 <%= render 'shared/navbar_two' %>
 
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+</head>
+
+
 <div class="banner-three" style= "background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('<%= cl_image_path 'figure_1.png' %>');" id= "one">
   <div class="containter">
     <div class="profile-card">
@@ -100,40 +105,42 @@
                   <% CSV.foreach(@filepath, @csv_options) do |row| %>
                   <% if @mentor.university == row['Name'] %>
                   <h3><%= @mentor.university %>, <%= row['State'] %></h3>
-                  <p>
-                  Average annual total cost:
-                  $<%= row['AverageTotalCost'] %>
+
+
+                  <h4>Student population</h4>
+
+                   <p>
+                  Number of full-time students:
+                  <%= row['FullTimeTotal'] %> Students
                   </p>
 
-                  <p>
-                  Out-of-state tuition and fees:
-                  $<%= row['OutOfStateTuition'] %>
-                  </p>
 
-                  <p>
-                  Acceptance rate:
-                  <%= row['AcceptanceRate'] %>%
-                  </p>
+                  <div class="gend-container">
+                    <canvas id="myChart"></canvas>
+                  </div>
+
+
+                   <div class="eth-container">
+                    <canvas id="myPie"></canvas>
+                  </div>
+
+
+                  <h4>Admissions</h4>
 
                   <p>
                   Total number of applicants:
                   <%= row['TotalApplicants'] %> Applicants
                   </p>
 
-                  <p>
-                  Number of full-time students:
-                  <%= row['FullTimeTotal'] %> Students
-                  </p>
 
-                  <p>
-                  Number of full-time male students:
-                  <%= row['FullTimeMen'] %> Students
-                  </p>
+                  <div class="accept-container">
+                    <canvas id="myStack"></canvas>
+                  </div>
 
-                  <p>
-                  Number of full-time female students:
-                  <%= row['FullTimWomen'] %> Students
-                  </p>
+
+                  <div class="Sat-container">
+                    <canvas id="myHorizontal"></canvas>
+                  </div>
 
                   <p>
                   SAT Critical Reading 25th percentile:
@@ -161,41 +168,234 @@
                   </p>
 
                   <p>
-                  SAT Critical Math 25th percentile:
-                  <%= row['SATM25%'] %>
+                  SAT Critical Math 75th percentile:
+                  <%= row['SATM75%'] %>
                   </p>
 
-                  <p>
-                  Student profile - Indian:
-                  <%= row['%RaceAmericanIndian'] %>%
-                  </p>
+                  <h4>Costs</h4>
 
-                  <p>
-                  Student profile - Asian:
-                  <%= row['%RaceAsian'] %>%
-                  </p>
 
-                  <p>
-                  Student profile - Black:
-                  <%= row['%RaceBlack'] %>%
-                  </p>
+                  <div class="cost-container">
+                    <canvas id="myStack2"></canvas>
+                  </div>
 
-                  <p>
-                  Student profile - Hispanic:
-                  <%= row['%RaceHispanic'] %>%
-                  </p>
 
-                  <p>
-                  Student profile - White:
-                  <%= row['%RaceWhite'] %>%
-                  </p>
+                  <script>
 
-                  <p>
-                  Student profile - Unknown:
-                  <%= row['%RaceUnknown'] %>%
-                  </p>
+                    let myChart = document.getElementById('myChart').getContext('2d');
+
+                    let gendBar = new Chart(myChart, {
+                      type:'bar',
+                      data:{
+                        labels:['Male','Female'],
+                        datasets:[{
+                          label:'Population',
+                          data:[<%= row['FullTimeMen'] %>,<%= row['FullTimeWomen'] %>],
+                          backgroundColor:['#D6A850','#F37273'],
+                          borderWidth:1,
+                          borderColor:'#777'
+                        }]
+                      },
+                      options:{
+                        scales: {
+                          yAxes: [{
+                            ticks: {
+                              beginAtZero:true
+                            }
+                          }]
+                        },
+
+                        legend:{
+                          display: false
+                        },
+
+                        title:{
+                          display:true,
+                          text:'By Gender',
+                          fontSize:25
+                        }
+
+                      }
+                      });
+
+                    let myPie = document.getElementById('myPie').getContext('2d');
+
+                    let ethPie = new Chart(myPie, {
+                      type:'pie',
+                      data:{
+                        labels:['India','Asian','Black and African American','Hispanic','White','Unknown'],
+                        datasets:[{
+                          label:'Population',
+                          data:[<%= row['%RaceAmericanIndian'] %>,<%= row['%RaceAsian'] %>,<%= row['%RaceBlack'] %>,<%= row['%RaceHispanic'] %>,<%= row['%RaceWhite'] %>,<%= row['%RaceUnknown'] %>],
+                          backgroundColor:[
+                            'rgba(255, 99, 132, 0.2)',
+                            '#D6A850',
+                            '#F37273',
+                            '#777',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                          ],
+
+                          borderWidth:1,
+                          borderColor:'#777'
+                        }]
+                      },
+                      options:{
+                        title:{
+                          display:true,
+                          text:'By Ethnic Background',
+                          fontSize:25
+                        },
+
+                        legend:{
+                          display: true,
+                          position: 'bottom'
+                        }
+                      }
+                      });
+
+
+                    let myStack = document.getElementById('myStack').getContext('2d');
+
+                    let acceptStack = new Chart(myStack, {
+                      type:'bar',
+                      data:{
+                        labels:['Rate'],
+                        datasets:[
+                          {
+                            label: 'Acceptance',
+                            data: [<%= row['AcceptanceRate'] %>],
+                            backgroundColor: '#D6E9C6' // green
+                          },
+
+                          {
+                          label: 'Non Acceptance',
+                          data: [100-<%= row['AcceptanceRate'] %>],
+                          backgroundColor: '#EBCCD1' // red
+                          }
+                        ]
+                      },
+
+                      options:{
+                        title:{
+                          display:true,
+                          text:'Acceptance Rate',
+                          fontSize:25
+                        },
+
+                        scales: {
+                            xAxes: [{ stacked: true }],
+                            yAxes: [{ stacked: true }]
+                          },
+
+                        legend:{
+                          display: false
+                        }
+                      }
+                      });
+
+
+
+                    let myStack2 = document.getElementById('myStack2').getContext('2d');
+
+                    let costStack = new Chart(myStack2, {
+                      type:'bar',
+                      data:{
+                        labels:['Out of State Tuition', 'Average Annual'],
+                        datasets:[
+                          {
+                            label: 'Cost',
+                            data: [<%= row['OutOfStateTuition'] %>,<%= row['AverageTotalCost'] %>],
+                            backgroundColor: '#D6E9C6' // green
+                          },
+
+                          {
+                          label: 'Remaining from US100k',
+                          data: [100000-<%= row['OutOfStateTuition'] %>,100000-<%= row['AverageTotalCost'] %>],
+                          backgroundColor: '#EBCCD1' // red
+                          }
+                        ]
+                      },
+
+                      options:{
+                        title:{
+                          display:true,
+                          text:'Annual Costs',
+                          fontSize:25
+                        },
+
+                        scales: {
+                            xAxes: [{ stacked: true }],
+                            yAxes: [{ stacked: true }]
+                          },
+
+                        legend:{
+                          display: false
+                        }
+                      }
+                      });
+
+                    let myHorizontal = document.getElementById('myHorizontal').getContext('2d');
+
+                    let satStack = new Chart(myHorizontal, {
+                      type:'horizontalBar',
+                      data:{
+                        labels:['Reading', 'Writing','Math'],
+                        datasets:[
+                          {
+                            label: 'X',
+                            data: [<%= row['SATCR25%'] %>,<%= row['SATWR25%'] %>,<%= row['SATM25%'] %>],
+                            backgroundColor: '#D6E9C6' // green
+                          },
+
+                          {
+                          label: 'Y',
+                          data: [<%= row['SATCR75%'] %>-<%= row['SATCR25%'] %>,<%= row['SATWR75%'] %>-<%= row['SATWR25%'] %>,<%= row['SATM75%'] %>-<%= row['SATM25%'] %>],
+                          backgroundColor: '#EBCCD1' // red
+                          },
+
+                          {
+                          label: 'Z',
+                          data: [800-<%= row['SATCR75%'] %>,800-<%=row['SATWR75%'] %>,800-<%= row['SATM75%'] %>],
+                          backgroundColor: '#EBCCD1' // red
+                          }
+
+                        ]
+                      },
+
+                      options:{
+                        title:{
+                          display:true,
+                          text:'SAT Scores',
+                          fontSize:25
+                        },
+
+                        scales: {
+                            xAxes: [{ stacked: true }],
+                            yAxes: [{ stacked: true }]
+                          },
+
+                        legend:{
+                          display: false
+                        }
+                      }
+                      });
+
+
+
+
+
+
+
+
+
+                  </script>
+
                   <% end %>
                   <% end %>
+
+
+
 
                 </div>
               </div>
