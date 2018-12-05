@@ -1,0 +1,5 @@
+meta_product_name: "uchoose"
+meta_title: "uchoose | Choose your future U.S. university"
+meta_description: "Deciding on your future U.S. university? uchoose helps you make an informed decision by connecting you directly with current university students across the U.S."
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
