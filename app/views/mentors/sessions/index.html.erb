@@ -58,10 +58,9 @@
             <div class="col-xs-6">
               <div class="card-center">
                 <h3 class="title"><%= mentor.first_name.upcase %> <%= mentor.last_name %></h3>
-                <h3 class="uni-maj"> <%= mentor.university %> / <%= mentor.major %> <%= mentor.degree_level %> </h3>
-                <% if mentor.description%>
-                <p id = "description"> <%= mentor.description.first(80)%> ...</p>
-                <% end %>
+                <h3 class="uni-maj"> <%= mentor.university %> </h3>
+                <h4 class="uni-uni"><%= mentor.major %> (<%= mentor.degree_level %>)</h4>
+
               </div>
             </div>
 

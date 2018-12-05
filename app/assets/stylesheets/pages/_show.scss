@@ -445,11 +445,38 @@ font-weight:600;
 }
 
 
+.modal-content {
+  border-radius: 8px;
+}
+
+#right-payment {
+  display:flex;
+  justify-content:center;
+  text-align:left;
+  flex-direction: column;
+}
+
+#left-payment {
+  display:flex;
+  justify-content:center;
+  text-align:right;
+  flex-direction: column;
+}
+
+#left-payment h3 {
+  line-height:0.8;
+  font-weight: bold;
+}
+
+#right-payment h4 {
+  font-weight: bold;
+}
+
 /*---------CHECK ANIMATION----------*/
 svg {
   width: 100px;
   display: block;
-  margin: 40px auto 0;
+  margin: 30px auto 0;
 }
 
 .path {
@@ -515,4 +542,30 @@ svg {
   }
 }
 
+/*---------REVIEW----------*/
+
+.review-container {
+  display:flex;
+  justify-content:center;
+  flex-direction: column;
+  padding: 50px;
+  align-items: center;
+  text-align: center;
+  margin-top: -10vh;
+}
+
+.review-container h1 {
+  font-family: poppins;
+  font-weight: semi-bold;
+}
+
+#review_mentor_rating {
+  height:35px;
+  justify-content:center;
+}
+
+#review_mentor_content {
+    height:100px;
+
+}
 

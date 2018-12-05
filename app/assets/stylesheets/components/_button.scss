@@ -132,7 +132,7 @@
   width: 110px;
   height:80px;
   margin-right: 2px;
-  border-radius: 10px;
+  border-radius: 15px;
       padding: 10px;
           font-size: 13px;
   font-weight: bold;
@@ -157,7 +157,7 @@
       height:80px;
       margin-left: 2px;
     font-size: 13px;
-  border-radius: 10px;
+  border-radius: 15px;
   font-weight: bold;
   background: #D5A021;
   transition: background 0.3s ease;
@@ -173,6 +173,29 @@
   color: white;
 }
 
+ .btn-treehouse-three {
+  color: white;
+  width: 130px;
+  padding: 8px;
+  height:35px;
+  text-align:center;
+  margin-left: 2px;
+  font-size: 13px;
+  border-radius: 20px;
+  font-weight: bold;
+  background: #F2A359;
+  transition: background 0.3s ease;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+
+}
+
+.btn-treehouse-three:hover {
+  opacity: 1;
+  background: #AD0103;
+  text-decoration: none;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+  color: white;
+}
 
 
 
