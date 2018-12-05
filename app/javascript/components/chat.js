@@ -24,10 +24,61 @@ export class Chat {
     });
   }
 
+
+
+  // TO JOIN UNIQUE CHANNEL
+
+
+  // joinChannel() {
+  //   if (this.channel.state.status !== "joined") {
+  //     this.channel.join().then(function(channel) {
+  //       console.log("Joined channel");
+  //      });
+  //   }
+  // }
+
+  // setupChannel(channel) {
+  //   this.channel = channel;
+
+  //   var self = this;
+  //   this.channel.getMessages(100).then(function(messages) {
+  //   const totalMessages = messages.items.length;
+  //   for (var i = 0; i < totalMessages; i++) {
+  //     const message = messages.items[i];
+  //     self.addMessage(message);
+  //   }
+  //   });
+
+  //   this.joinChannel();
+  //   this.addMessage({ body: `Joined chat as ${this.identity}` });
+  //   this.channel.on("messageAdded", message => this.addMessage(message));
+  //   this.setupForm();
+  // }
+
+  // setupClient(client) {
+  //   this.client = client;
+  //   // let channelID = document.getElementsByClassName("chat")[0].id;
+  //   let channelID = 'channel1'
+  //   console.log(channelID);
+  //   this.client.getChannelByUniqueName(channelID)
+  //     .then((channel) => this.setupChannel(channel))
+  //     .catch((error) => {
+  //       this.client.createChannel({
+  //         uniqueName: channelID,
+  //         friendlyName: channelID,
+  //         // isPrivate: true
+  //       }).then((channel) => this.setupChannel(channel));
+  //     });
+  // }
+
+
+
+// TO JOIN GENERAL PUBLIC CHANNEL
+
   joinChannel() {
     if (this.channel.state.status !== "joined") {
       this.channel.join().then(function(channel) {
-        console.log("Joined channel");
+        console.log("Joined General Channel");
        });
     }
   }
@@ -45,43 +96,47 @@ export class Chat {
     });
 
     this.joinChannel();
-    this.addMessage({ body: `Joined chat as ${this.identity}` });
+    this.addMessage({ body: `Joined as ${this.identity}` });
     this.channel.on("messageAdded", message => this.addMessage(message));
     this.setupForm();
   }
 
   setupClient(client) {
+    const channelName = 'channel2'   // CHANGE THIS FOR A NEW CHANNEL!
+
     this.client = client;
-    // let channelID = document.getElementsByClassName("chat")[0].id;
-    let channelID = 'Mentor chat (1)'
-    console.log(channelID);
-    this.client.getChannelByUniqueName(`${channelID}`)
+    this.client.getChannelByUniqueName(channelName)
       .then((channel) => this.setupChannel(channel))
       .catch((error) => {
         this.client.createChannel({
-          uniqueName: `${channelID}`,
-          friendlyName: `${channelID}`,
-          isPrivate: true
+          uniqueName: channelName,
+          friendlyName: "General Chat Channel"
         }).then((channel) => this.setupChannel(channel));
       });
   }
 
   renderMessages() {
     let messageContainer = document.querySelector(".chat .messages");
+    // loop through this.messages and render them
     messageContainer.innerHTML = this.messages
-      .map(message => `<div class="message">${message}</div>`)
+      .map(message => {
+        return `<div class="message">${message}</div>`
+      })
       .join("");
   }
 
   addMessage(message) {
     let html = "";
 
+    // console.log(`........................AUTHOR IS ${message.author}`)
+    // console.log(message.timestamp)
     if (message.author) {
       const className = message.author == this.identity ? "user me" : "user";
-      html += `<strong><span class="${className}">${message.author}: </span></strong>`;
+      html += `<div class="${className}"><p>${message.body}</p></div>`;
+
     }
 
-    html += message.body;
+    // html += message.body;
     this.messages.push(html);
     this.renderMessages();
   }
