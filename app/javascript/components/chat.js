@@ -102,7 +102,7 @@ export class Chat {
   }
 
   setupClient(client) {
-    const channelName = 'channel2'   // CHANGE THIS FOR A NEW CHANNEL!
+    const channelName = 'channel3'   // CHANGE THIS FOR A NEW CHANNEL!
 
     this.client = client;
     this.client.getChannelByUniqueName(channelName)
