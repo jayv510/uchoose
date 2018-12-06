@@ -5,6 +5,48 @@
   padding: 15px 65px;
 }
 
+#menu2 h3 {
+  text-align: center;
+  justify-content:center;
+  font-weight: bolder;
+  padding: 10px;
+  font-size: 35px;
+}
+
+#student-gend {
+  justify-content: center;
+  align-items:center;
+  flex-direction: row;
+}
+
+
+.eth-container, .Sat-container {
+  padding-bottom: 30px;
+}
+
+#student-gend p {
+    text-align: left !important;
+    color:#f57170;
+}
+#student-gend h5 {
+  font-size: 35px !important;
+  font-weight: bold;
+  text-align: left !important;
+  color:#f57170;
+}
+#menu2 h4 {
+  text-align: center;
+  justify-content:center;
+  font-weight: bolder;
+  padding: 5px;
+  font-size:28px;
+
+}
+
+#menu2 p {
+  text-align: center;
+  font-size: 15px;
+}
 #uni h4 {
   line-height: 0.8;
 }
