@@ -156,12 +156,18 @@ export class Chat {
     })
   }
 
-  // inviteFriends() {
-  //   myChannel.invite('elmo').then(function() {
-  //     console.log('Your friend has been invited!');
-  //   })
-  // }
 };
 
+document.getElementById("delete-channel").addEventListener("click", function(){
+    Rails.ajax({
+      url: "/tokens",
+      type: "DELETE",
+    });
+});
+
 window.Chat = Chat
+
+
+
+
 

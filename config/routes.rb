@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   get '/mentors/:mentor_id/review_mentors/new', to: 'review_mentors#new', as: :review_mentors
   post '/mentors/:mentor_id/review_mentors/new', to: 'review_mentors#create'
 
-  resources :tokens, only: [:create]
+  # resources :tokens, only: [:create]
+  post '/tokens', to: 'tokens#create'
+  delete '/tokens', to: 'tokens#delete'
   resources :videotokens, only: [:create]
   resources :call_durations, only: [:create]
 end
