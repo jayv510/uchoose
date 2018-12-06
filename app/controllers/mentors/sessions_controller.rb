@@ -65,7 +65,7 @@ class Mentors::SessionsController < Devise::SessionsController
       #   aggs: [:university, :nationality, :major_category, :major, :first_name, :last_name, :degree_level]
       # })
       # add adjustments to search here
-      @result = "Showing mentors matching \"#{params[:query]}\""
+      @result = "Showing #{@mentors.count} mentors matching \"#{params[:query]}\""
 
     else
 
