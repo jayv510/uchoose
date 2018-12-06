@@ -25,5 +25,21 @@ class TokensController < ApplicationController
     # Generate the token and send to client
     render json: { identity: identity, token: token.to_jwt }
   end
+
+  def delete
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    channel = @client.chat.services('ISbe316255daa64f228907d04a9bc3565f')
+                          .channels('channel3')
+                          .fetch
+
+    @client.chat.services('ISbe316255daa64f228907d04a9bc3565f')
+                .channels(channel.sid)
+                .delete
+  end
+
 end
 

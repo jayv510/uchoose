@@ -5,7 +5,8 @@ export class Chat {
     this.channel = null;
     this.client = null;
     this.identity = null;
-    this.messages = ["Setting up chat ..."];
+    // this.messages = ["Setting up chat ..."];
+    this.messages = [""];
     this.initialize();
   }
 
@@ -123,6 +124,8 @@ export class Chat {
         return `<div class="message">${message}</div>`
       })
       .join("");
+    let msg = document.getElementsByClassName("message");
+    msg[msg.length-1].scrollIntoView()
   }
 
   addMessage(message) {
@@ -132,7 +135,7 @@ export class Chat {
     // console.log(message.timestamp)
     if (message.author) {
       const className = message.author == this.identity ? "user me" : "user";
-      html += `<div class="${className}"><p>${message.body}</p><p>${message.timestamp.toLocaleTimeString()}</p></div>`;
+      html += `<div class="${className}"><p class="message-body">${message.body}</p><p class="timestamp">${message.timestamp.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: true}).toUpperCase()}</p></div>`;
 
     }
 
@@ -153,12 +156,18 @@ export class Chat {
     })
   }
 
-  // inviteFriends() {
-  //   myChannel.invite('elmo').then(function() {
-  //     console.log('Your friend has been invited!');
-  //   })
-  // }
 };
 
+document.getElementById("delete-channel").addEventListener("click", function(){
+    Rails.ajax({
+      url: "/tokens",
+      type: "DELETE",
+    });
+});
+
 window.Chat = Chat
+
+
+
+
 
