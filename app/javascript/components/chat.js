@@ -5,8 +5,8 @@ export class Chat {
     this.channel = null;
     this.client = null;
     this.identity = null;
-    // this.messages = ["Setting up chat ..."];
-    this.messages = [""];
+    this.messages = ["Loading chat ..."];
+    // this.messages = [""];
     this.initialize();
   }
 
@@ -158,16 +158,15 @@ export class Chat {
 
 };
 
-document.getElementById("delete-channel").addEventListener("click", function(){
-    Rails.ajax({
-      url: "/tokens",
-      type: "DELETE",
-    });
-});
-
 window.Chat = Chat
-
-
-
+var del = document.getElementById("delete-channel")
+if (del != undefined){
+  del.addEventListener("click", function(){
+      Rails.ajax({
+        url: "/tokens",
+        type: "DELETE",
+      });
+  });
+}
 
 
