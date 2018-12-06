@@ -5,7 +5,8 @@ export class Chat {
     this.channel = null;
     this.client = null;
     this.identity = null;
-    this.messages = ["Setting up chat ..."];
+    // this.messages = ["Setting up chat ..."];
+    this.messages = [""];
     this.initialize();
   }
 
@@ -102,7 +103,7 @@ export class Chat {
   }
 
   setupClient(client) {
-    const channelName = 'channel2'   // CHANGE THIS FOR A NEW CHANNEL!
+    const channelName = 'channel3'   // CHANGE THIS FOR A NEW CHANNEL!
 
     this.client = client;
     this.client.getChannelByUniqueName(channelName)
@@ -123,6 +124,8 @@ export class Chat {
         return `<div class="message">${message}</div>`
       })
       .join("");
+    let msg = document.getElementsByClassName("message");
+    msg[msg.length-1].scrollIntoView()
   }
 
   addMessage(message) {
@@ -132,7 +135,7 @@ export class Chat {
     // console.log(message.timestamp)
     if (message.author) {
       const className = message.author == this.identity ? "user me" : "user";
-      html += `<div class="${className}"><p>${message.body}</p><p>${message.timestamp.toLocaleTimeString()}</p></div>`;
+      html += `<div class="${className}"><p class="message-body">${message.body}</p><p class="timestamp">${message.timestamp.toLocaleTimeString()}</p></div>`;
 
     }
 
