@@ -25,7 +25,7 @@
 }
 
 .card:hover {
-
+  text-decoration: none !important;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
   transform: scale(1.05);
 }
@@ -35,15 +35,15 @@ h3.title {
   font-weight: 600;
   margin: 5px;
   padding-bottom: 2px;
-  color: #6F8AB7;
+  color: #171717;
 }
 
 h3.uni-maj {
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 500;
   margin: 5px;
-  padding-bottom: 2px;
-  color: #6F8AB7;
+  padding-bottom: 1px;
+  color: #171717;
 
 }
 
@@ -51,9 +51,17 @@ h4.uni-uni {
   font-size: 15px;
   font-weight: 400;
   margin: 5px;
-  padding-bottom: 2px;
-  color: #6F8AB7;
+  padding-bottom: 1px;
+  color: #454545;
 
+}
+
+h5.uni-uni {
+  font-size: 13px;
+  font-weight: 400;
+  margin: 5px;
+  padding-bottom: 1px;
+  color: #454545;
 }
 
 @media (max-width: 800px) {
@@ -128,13 +136,22 @@ h4.uni-uni {
 
 #price {
   text-decoration: none;
-  font-size:12px;
+  font-size:20px;
   color:#F57170;
+  margin-bottom: -5px;
 }
 
 .card-right {
   width: 300px;
   padding: 3vh 2vw;
+}
+.card-right:hover {
+  text-decoration: none !important;
+}
+
+#price:hover {
+    text-decoration: none !important;
+
 }
 
 @media (max-width: 850px) {
