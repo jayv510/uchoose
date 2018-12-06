@@ -38,8 +38,6 @@
             <div class="profile-right">
               <h1><span id = "name-title">  <%= @mentor.first_name %>  <%= @mentor.last_name.upcase %> <p>(<%= @mentor.nationality %>)</p></span></h1>
 
-              <h4 id="uni"> <%= @mentor.university %></h4>
-
               <% count = 0 %>
               <% 5.times do %>
               <% if @mentor.average_review > count %>
@@ -56,6 +54,9 @@
 
               <%= @mentor.average_review %>
               (<%= @mentor.review_mentors.count %> reviews)
+              <h4 id="uni"> <%= @mentor.university %></h4>
+
+
 
 
               <h3 id="major"> <strong>Major: </strong><%= @mentor.major %></h3>
