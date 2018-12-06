@@ -78,7 +78,7 @@ end
 puts "Generating fake female mentors ..."
 
 50.times do
-  random = rand(172)
+  random = rand(173)-1
 
   Mentor.create(
   email: Faker::Internet.email,
@@ -95,6 +95,49 @@ puts "Generating fake female mentors ..."
   remote_photo_url: female_avatars.sample,
   rate: (3..12).to_a.sample)
 end
+
+puts "Generating fake mentors for NYU ..."
+
+15.times do
+  random = rand(173)-1
+
+  Mentor.create(
+  email: Faker::Internet.email,
+  password: "123456",
+  first_name: Faker::Name.male_first_name,
+  last_name: Faker::Name.last_name,
+  nationality: countries.sample,
+  university: 'New York University',
+  major_category: majors[random].split('%')[1],
+  major: majors[random].split('%')[0].titleize,
+  degree_level: degree_levels.sample,
+  description: Faker::Lorem.paragraph(10, true, 5),
+  description_two: Faker::Lorem.paragraph(5, true, 3),
+  remote_photo_url: male_avatars.sample,
+  rate: (3..12).to_a.sample)
+end
+
+puts "Generating fake female mentors ..."
+
+15.times do
+  random = rand(173)-1
+
+  Mentor.create(
+  email: Faker::Internet.email,
+  password: "123456",
+  first_name: Faker::Name.female_first_name,
+  last_name: Faker::Name.last_name,
+  nationality: countries.sample,
+  university: 'New York University',
+  major_category: majors[random].split('%')[1],
+  major: majors[random].split('%')[0].titleize,
+  degree_level: degree_levels.sample,
+  description: Faker::Lorem.paragraph(10, true, 5),
+  description_two: Faker::Lorem.paragraph(5, true, 3),
+  remote_photo_url: female_avatars.sample,
+  rate: (3..12).to_a.sample)
+end
+
 
 Mentor.create(
   email: "mentor@test.com",
@@ -130,6 +173,14 @@ Prospective.create(
   first_name: "Peter",
   last_name: "Prospective",
   nationality: countries.sample,
+  remote_photo_url: male_avatars.sample)
+
+Prospective.create(
+  email: "jay@uchoose.com",
+  password: "123456",
+  first_name: "Jay",
+  last_name: "Vajanopath",
+  nationality: "Thailand",
   remote_photo_url: male_avatars.sample)
 
 # ----------------------REVIEWS--------------------------------------------------
