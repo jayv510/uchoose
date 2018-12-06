@@ -242,6 +242,10 @@ font-weight:600;
   width: 80vw;
 }
 
+.modal-dialog.chat-modal {
+  width: 50vw;
+}
+
 .chat-window {
   height: 500px;
   width: 100%;
@@ -254,11 +258,16 @@ font-weight:600;
 .modal-header {
   border-bottom: 1px solid #F57170;
   background-color: #F57170;
+  border-radius: 7.8px 7.8px 0px 0px;
+}
+
+.modal-body.messages {
+  height: 47vh;
+  overflow: auto;
 }
 
 .modal-body {
-  height: 47vh;
-  overflow: auto;
+  height: 75vh;
 }
 
 .modal-footer {
@@ -456,10 +465,6 @@ font-weight:600;
   margin-bottom: 10px;
 }
 
-
-.modal-header {
-  border-radius: 7.8px 7.8px 0px 0px;
-}
 
  #ok ion-icon {
   font-size: 15px;

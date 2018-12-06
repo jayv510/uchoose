@@ -135,7 +135,7 @@ export class Chat {
     // console.log(message.timestamp)
     if (message.author) {
       const className = message.author == this.identity ? "user me" : "user";
-      html += `<div class="${className}"><p class="message-body">${message.body}</p><p class="timestamp">${message.timestamp.toLocaleTimeString()}</p></div>`;
+      html += `<div class="${className}"><p class="message-body">${message.body}</p><p class="timestamp">${message.timestamp.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: true}).toUpperCase()}</p></div>`;
 
     }
 
