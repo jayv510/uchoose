@@ -23,10 +23,12 @@
               :width => 280, :height => 280,
               :crop => :fill) %>
               <% end %>
-
+            <div class = "button-group">
               <button type="button" class="button-chat btn-treehouse-one" id="startChat" data-toggle="modal" data-target="#chatModal" data-backdrop="static" data-keyboard="false"><i class="fas fa-comments"></i> &nbsp; Chat with <%= @mentor.first_name %> </button>
 
               <button type="button" class="button-chat btn-treehouse-two" id="startVideo" data-toggle="modal" data-target="#videoModal" data-backdrop="static" data-keyboard="false"><i class="fas fa-video"></i> &nbsp; Video chat with <%= @mentor.first_name %> </button>
+
+            </div>
 
               <h3 id="go-back"> <%= link_to "Back to mentors", mentors_path %> </h3>
             </div>
@@ -35,8 +37,6 @@
           <div class="col-xs-12 col-sm-8 col-md-8">
             <div class="profile-right">
               <h1><span id = "name-title">  <%= @mentor.first_name %>  <%= @mentor.last_name.upcase %> <p>(<%= @mentor.nationality %>)</p></span></h1>
-
-              <h4 id="uni"> <%= @mentor.university %></h4>
 
               <% count = 0 %>
               <% 5.times do %>
@@ -54,6 +54,9 @@
 
               <%= @mentor.average_review %>
               (<%= @mentor.review_mentors.count %> reviews)
+              <h4 id="uni"> <%= @mentor.university %></h4>
+
+
 
 
               <h3 id="major"> <strong>Major: </strong><%= @mentor.major %></h3>
@@ -106,71 +109,55 @@
                   <% if @mentor.university == row['Name'] %>
                   <h3><%= @mentor.university %>, <%= row['State'] %></h3>
 
-
+                <div class = "student-container">
                   <h4>Student population</h4>
 
-                   <p>
-                  Number of full-time students:
-                  <%= row['FullTimeTotal'] %> Students
-                  </p>
 
+                  <div class = "row">
+                    <div class="col-xs-12 col-sm-6 col-md-6" id= "student-gend">
+                      <div class="gend-container">
+                        <canvas id="myChart" width="90" height="60"></canvas>
+                      </div>
+                    </div>
 
-                  <div class="gend-container">
-                    <canvas id="myChart"></canvas>
+                    <div class="col-xs-12 col-sm-6 col-md-6" id= "student-gend" style = "padding-top: 10px;">
+                  <p >
+                      Number of full-time students:
+                      </p>
+
+                      <h5>
+                      <%= row['FullTimeTotal'] %> Students
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+
+                 <div class="eth-container">
+                        <canvas id="myPie" ></canvas>
                   </div>
 
-
-                   <div class="eth-container">
-                    <canvas id="myPie"></canvas>
-                  </div>
-
+                  <hr>
 
                   <h4>Admissions</h4>
+                  <div class = "row">
+                    <div class="col-xs-12 col-sm-6 col-md-6" id= "student-gend">
+                  <p>Total number of applicants:</p>
+                  <h5> <%= row['TotalApplicants'] %> Applicants</h5>
 
-                  <p>
-                  Total number of applicants:
-                  <%= row['TotalApplicants'] %> Applicants
-                  </p>
-
-
-                  <div class="accept-container">
-                    <canvas id="myStack"></canvas>
                   </div>
+                  <div class="col-xs-12 col-sm-6 col-md-6" id= "student-gend">
 
+                    <div class="accept-container">
+                      <canvas id="myStack" height = "200"></canvas>
+                    </div>
+                  </div>
 
                   <div class="Sat-container">
                     <canvas id="myHorizontal"></canvas>
                   </div>
 
-                  <p>
-                  SAT Critical Reading 25th percentile:
-                  <%= row['SATCR25%'] %>
-                  </p>
+                  <hr>
 
-                  <p>
-                  SAT Critical Reading 75th percentile:
-                  <%= row['SATCR75%'] %>
-                  </p>
-
-                  <p>
-                  SAT Critical Writing 25th percentile:
-                  <%= row['SATWR25%'] %>
-                  </p>
-
-                  <p>
-                  SAT Critical Writing 75th percentile:
-                  <%= row['SATWR75%'] %>
-                  </p>
-
-                  <p>
-                  SAT Critical Math 25th percentile:
-                  <%= row['SATM25%'] %>
-                  </p>
-
-                  <p>
-                  SAT Critical Math 75th percentile:
-                  <%= row['SATM75%'] %>
-                  </p>
 
                   <h4>Costs</h4>
 
@@ -184,6 +171,8 @@
 
                     let myChart = document.getElementById('myChart').getContext('2d');
 
+
+
                     let gendBar = new Chart(myChart, {
                       type:'bar',
                       data:{
@@ -191,9 +180,10 @@
                         datasets:[{
                           label:'Population',
                           data:[<%= row['FullTimeMen'] %>,<%= row['FullTimeWomen'] %>],
-                          backgroundColor:['#D6A850','#F37273'],
+                          backgroundColor:['#FBCE6A','#8A86DF'],
                           borderWidth:1,
-                          borderColor:'#777'
+                          borderColor:'white',
+                          padding: 5
                         }]
                       },
                       options:{
@@ -202,6 +192,9 @@
                             ticks: {
                               beginAtZero:true
                             }
+                          }],
+                          xAxes: [{
+                            barPercentage: 0.5
                           }]
                         },
 
@@ -212,7 +205,8 @@
                         title:{
                           display:true,
                           text:'By Gender',
-                          fontSize:25
+                          fontSize:18,
+                          fontColor: '#f57170'
                         }
 
                       }
@@ -228,29 +222,35 @@
                           label:'Population',
                           data:[<%= row['%RaceAmericanIndian'] %>,<%= row['%RaceAsian'] %>,<%= row['%RaceBlack'] %>,<%= row['%RaceHispanic'] %>,<%= row['%RaceWhite'] %>,<%= row['%RaceUnknown'] %>],
                           backgroundColor:[
-                            'rgba(255, 99, 132, 0.2)',
-                            '#D6A850',
-                            '#F37273',
-                            '#777',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
+                            '00ABC2',
+                            '#FCCF61',
+                            '#D97171',
+                            '#71C973',
+                            '#8A84E2',
+                            '#878787'
                           ],
 
-                          borderWidth:1,
-                          borderColor:'#777'
+                          borderWidth:2,
+                          borderColor:'white'
                         }]
                       },
                       options:{
                         title:{
                           display:true,
                           text:'By Ethnic Background',
-                          fontSize:25
+                          fontSize:18,
+                          fontColor: '#f57170'
                         },
 
                         legend:{
                           display: true,
-                          position: 'bottom'
+                          position: 'bottom',
+                          labels: {
+                            boxWidth: 10
+                          }
+
                         }
+
                       }
                       });
 
@@ -265,13 +265,13 @@
                           {
                             label: 'Acceptance',
                             data: [<%= row['AcceptanceRate'] %>],
-                            backgroundColor: '#D6E9C6' // green
+                            backgroundColor: '#4BD94F' // green
                           },
 
                           {
                           label: 'Non Acceptance',
                           data: [100-<%= row['AcceptanceRate'] %>],
-                          backgroundColor: '#EBCCD1' // red
+                          backgroundColor: '#D97171' // red
                           }
                         ]
                       },
@@ -280,12 +280,14 @@
                         title:{
                           display:true,
                           text:'Acceptance Rate',
-                          fontSize:25
+                          fontSize:18,
+                          fontColor: "#f57170"
                         },
 
                         scales: {
-                            xAxes: [{ stacked: true }],
+                            xAxes: [{ stacked: true,  barPercentage: 0.5}],
                             yAxes: [{ stacked: true }]
+
                           },
 
                         legend:{
@@ -295,24 +297,23 @@
                       });
 
 
-
                     let myStack2 = document.getElementById('myStack2').getContext('2d');
 
                     let costStack = new Chart(myStack2, {
                       type:'bar',
                       data:{
-                        labels:['Out of State Tuition', 'Average Annual'],
+                        labels:['Out of State Tuition', 'Total Average Annual'],
                         datasets:[
                           {
-                            label: 'Cost',
+                            label: '',
                             data: [<%= row['OutOfStateTuition'] %>,<%= row['AverageTotalCost'] %>],
-                            backgroundColor: '#D6E9C6' // green
+                            backgroundColor: '#4BD94F' // green
                           },
 
                           {
                           label: 'Remaining from US100k',
                           data: [100000-<%= row['OutOfStateTuition'] %>,100000-<%= row['AverageTotalCost'] %>],
-                          backgroundColor: '#EBCCD1' // red
+                          backgroundColor: '#D97171' // red
                           }
                         ]
                       },
@@ -320,12 +321,14 @@
                       options:{
                         title:{
                           display:true,
-                          text:'Annual Costs',
-                          fontSize:25
+                          text:'Average Annual Spend (USD)',
+                          fontSize:18,
+                          fontColor: "#f57170"
+
                         },
 
                         scales: {
-                            xAxes: [{ stacked: true }],
+                            xAxes: [{ stacked: true, barPercentage: 0.8  }],
                             yAxes: [{ stacked: true }]
                           },
 
@@ -345,19 +348,19 @@
                           {
                             label: 'X',
                             data: [<%= row['SATCR25%'] %>,<%= row['SATWR25%'] %>,<%= row['SATM25%'] %>],
-                            backgroundColor: '#D6E9C6' // green
+                            backgroundColor: '#D5D5D5' // grey
                           },
 
                           {
                           label: 'Y',
                           data: [<%= row['SATCR75%'] %>-<%= row['SATCR25%'] %>,<%= row['SATWR75%'] %>-<%= row['SATWR25%'] %>,<%= row['SATM75%'] %>-<%= row['SATM25%'] %>],
-                          backgroundColor: '#EBCCD1' // red
+                          backgroundColor: '#4BD94F' // green
                           },
 
                           {
                           label: 'Z',
                           data: [800-<%= row['SATCR75%'] %>,800-<%=row['SATWR75%'] %>,800-<%= row['SATM75%'] %>],
-                          backgroundColor: '#EBCCD1' // red
+                          backgroundColor: '#D5D5D5' // grey
                           }
 
                         ]
@@ -367,7 +370,9 @@
                         title:{
                           display:true,
                           text:'SAT Scores',
-                          fontSize:25
+                          fontSize:18,
+                          fontColor: "#f57170"
+
                         },
 
                         scales: {
@@ -442,7 +447,6 @@
       Made with <i class="fas fa-heart"></i> by Le Decisive
     </div>
   </div>
-<%= link_to "Leave a review for this mentor", review_mentors_path(@mentor) %>
 
 </div>
 
@@ -470,7 +474,6 @@
     </div>
   </div>
   </div>
-<%= link_to "Leave a review for this mentor", review_mentors_path(@mentor) %>
 
 
 <!-- Video chat modal -->
@@ -507,7 +510,14 @@
 
              <div class = "col-xs-8 col-sm-8 col-md-8">
 
-              <div id="remote-media"></div>
+              <div id="remote-media">
+                  <div class="spinner">
+                  <div class="rect1"></div>
+                  <div class="rect2"></div>
+                  <div class="rect3"></div>
+                  <div class="rect4"></div>
+                  <div class="rect5"></div>
+                  </div>
             </div>
 
           </div>
