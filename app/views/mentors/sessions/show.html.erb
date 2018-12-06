@@ -177,7 +177,7 @@
                         datasets:[{
                           label:'Population',
                           data:[<%= row['FullTimeMen'] %>,<%= row['FullTimeWomen'] %>],
-                          backgroundColor:['#0496FF','#FF5964'],
+                          backgroundColor:['#FBCE6A','#8A86DF'],
                           borderWidth:1,
                           borderColor:'white',
                           padding: 5
@@ -221,7 +221,7 @@
                           backgroundColor:[
                             '00ABC2',
                             '#FCCF61',
-                            '#F46C62',
+                            '#D97171',
                             '#71C973',
                             '#8A84E2',
                             '#878787'
@@ -262,7 +262,7 @@
                           {
                             label: 'Acceptance',
                             data: [<%= row['AcceptanceRate'] %>],
-                            backgroundColor: '#44AF69' // green
+                            backgroundColor: '#4BD94F' // green
                           },
 
                           {
@@ -299,18 +299,18 @@
                     let costStack = new Chart(myStack2, {
                       type:'bar',
                       data:{
-                        labels:['Out of State Tuition', 'Average Annual'],
+                        labels:['Out of State Tuition', 'Total Average Annual'],
                         datasets:[
                           {
-                            label: 'Cost',
+                            label: '',
                             data: [<%= row['OutOfStateTuition'] %>,<%= row['AverageTotalCost'] %>],
-                            backgroundColor: '#D6E9C6' // green
+                            backgroundColor: '#4BD94F' // green
                           },
 
                           {
                           label: 'Remaining from US100k',
                           data: [100000-<%= row['OutOfStateTuition'] %>,100000-<%= row['AverageTotalCost'] %>],
-                          backgroundColor: '#EBCCD1' // red
+                          backgroundColor: '#D97171' // red
                           }
                         ]
                       },
@@ -318,7 +318,7 @@
                       options:{
                         title:{
                           display:true,
-                          text:'Annual Costs',
+                          text:'Average Annual Spend (USD)',
                           fontSize:18,
                           fontColor: "#f57170"
 
@@ -345,19 +345,19 @@
                           {
                             label: 'X',
                             data: [<%= row['SATCR25%'] %>,<%= row['SATWR25%'] %>,<%= row['SATM25%'] %>],
-                            backgroundColor: '#D5D5D5' // green
+                            backgroundColor: '#D5D5D5' // grey
                           },
 
                           {
                           label: 'Y',
                           data: [<%= row['SATCR75%'] %>-<%= row['SATCR25%'] %>,<%= row['SATWR75%'] %>-<%= row['SATWR25%'] %>,<%= row['SATM75%'] %>-<%= row['SATM25%'] %>],
-                          backgroundColor: '#f57170' // red
+                          backgroundColor: '#4BD94F' // green
                           },
 
                           {
                           label: 'Z',
                           data: [800-<%= row['SATCR75%'] %>,800-<%=row['SATWR75%'] %>,800-<%= row['SATM75%'] %>],
-                          backgroundColor: '#f57170' // red
+                          backgroundColor: '#D5D5D5' // grey
                           }
 
                         ]
