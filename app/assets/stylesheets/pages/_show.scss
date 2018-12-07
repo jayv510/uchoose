@@ -68,6 +68,7 @@ span {
   font-size: 28px;
   padding-top: 12px;
   margin-bottom: -15px;
+  color: #1A2A64;
 }
 
 #name-title p {
@@ -78,6 +79,7 @@ span {
 
 .profile-right h1 {
 font-weight:600;
+
 }
 #icon-color {
   color: #F57170;
@@ -155,12 +157,6 @@ font-weight:600;
 
 
 //---------CONTAINER for profile and positioning of right and left elements
-
-.mid-container {
-  display: flex;
-
-}
-
 
 
 .lower-container {
@@ -304,12 +300,16 @@ font-weight:600;
 }
 
 .modal-body.messages {
-  height: 41vh;
+  height: 51vh;
   overflow: auto;
 }
 
 .modal-body {
   height: 75vh;
+}
+
+.modal-body.transaction {
+  text-align: center;
 }
 
 .modal-footer {
@@ -537,7 +537,7 @@ font-weight:600;
 }
 
 #log {
-  height: 12vh;
+  height: 21vh;
   overflow-y: scroll;
   border: 1px solid #cececc;
   margin-top:10px;
@@ -611,6 +611,11 @@ font-weight:600;
 #left-payment h3 {
   line-height:0.8;
   font-weight: bold;
+}
+
+#time {
+  margin-top: 15px;
+  margin-bottom: 22px;
 }
 
 #right-payment h4 {

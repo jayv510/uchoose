@@ -5,7 +5,7 @@ export class Chat {
     this.channel = null;
     this.client = null;
     this.identity = null;
-    this.messages = ["Loading chat ..."];
+    this.messages = [""];
     // this.messages = [""];
     this.initialize();
   }

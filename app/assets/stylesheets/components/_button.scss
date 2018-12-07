@@ -55,12 +55,13 @@
 }
 
 #button-join {
+  width: 94%;
   outline:none;
   text-align: center;
   padding: 10px;
   border-radius:50px;
-  background: #0CF574;
-  border: solid 1px #0CF574;
+  background: limegreen;
+  border: 1px solid forestgreen;
   color:white;
   letter-spacing:1px;
   text-decoration: none;
@@ -73,6 +74,7 @@
   &:hover {
     color:#0CF574;
     background: white;
+    border: 1px solid forestgreen;
   }
   &:active {
     //letter-spacing: 2px;
@@ -81,7 +83,7 @@
 }
 
  #button-leave {
-
+  width: 94%;
   outline:none;
   text-align: center;
   padding: 10px;
@@ -172,11 +174,11 @@
  .btn-treehouse-three {
   color: white;
   width: 130px;
-  padding: 8px;
+  padding: 10px;
   height:35px;
   text-align:center;
   margin-left: 2px;
-  font-size: 13px;
+  font-size: 18px;
   border-radius: 20px;
   font-weight: bold;
   background: #F2A359;
