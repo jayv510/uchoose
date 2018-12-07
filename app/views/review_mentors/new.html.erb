@@ -3,7 +3,7 @@
 <div class="home-banner" style= "background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path 'perry-grone-732606-unsplash.jpg' %>');" id= "one">
   <div class = "review-container">
 
-  <h1> Thank you for using UChoose! </h1>
+  <h1> Thank you for using uchoose! </h1>
   <br>
   <p> Please kindly leave a review for <%= @mentor.first_name %>!</p>
 
@@ -11,7 +11,7 @@
           <%= f.input :rating, collection: 0..5 , id: "boxy"%>
           <%= f.hidden_field :prospective_id, :value => @prospective.id %>
           <%= f.input :content , id: "boxy" %>
-          <%= f.submit class: 'btn-treehouse' %>
+          <%= f.submit "Submit review", class: 'btn-treehouse' %>
         <% end %>
   </div>
 
